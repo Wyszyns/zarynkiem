@@ -2,9 +2,9 @@
 import { defineConfig } from 'astro/config';
 
 // SITE_URL / BASE_PATH are set by the GitHub Actions workflow.
-// With a custom domain (e.g. apartamentzarynkiem.pl) BASE_PATH is simply "/".
+// With a custom domain (e.g. zarynkiem.pl) BASE_PATH is simply "/".
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://apartamentzarynkiem.pl',
+  site: process.env.SITE_URL || 'https://zarynkiem.pl',
   base: process.env.BASE_PATH || '/',
   // Languages: Polish at "/", English at "/en/".
   // Texts live in src/translations/<lang>.json
