@@ -198,12 +198,12 @@ const schemaFaq = {
     <section id="top" class="relative min-h-[100svh] flex items-center pt-20 lg:pt-24 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <Image src={heroMeta} alt={pick(gallery.hero.alt, lang)} widths={widthsFor(heroMeta, [640, 960, 1280, 1920, 2400])} sizes="100vw" quality={72} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-slate-900/20"></div>
+            <div class="absolute inset-0 bg-slate-900/60"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
-            <div class="max-w-2xl ml-auto text-right">
-                <div class="flex flex-wrap justify-end gap-2 mb-6 fade-up">
+            <div class="max-w-2xl mx-auto">
+                <div class="flex flex-wrap gap-2 mb-6 fade-up">
                     {ratingSources.map((r) => (
                         <a href="#reviews" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium hover:bg-white/20 transition-colors">
                             <span class={`px-1.5 py-0.5 rounded font-bold ${r.box}`}>{r.score}</span>
@@ -219,7 +219,7 @@ const schemaFaq = {
 
                 <p class="text-lg text-slate-200 mb-8 font-light leading-relaxed fade-up delay-200">{t.hero.text}</p>
 
-                <div class="flex flex-wrap justify-end gap-4 mb-10 fade-up delay-300">
+                <div class="flex flex-wrap gap-4 mb-10 fade-up delay-300">
                     <a href="#contact" class="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-full transition-all hover:scale-105 shadow-lg shadow-amber-500/30 flex items-center gap-2">
                         <span>{t.cta.contact}</span>
                         <iconify-icon icon="solar:arrow-right-linear" width="20" height="20"></iconify-icon>
@@ -233,7 +233,7 @@ const schemaFaq = {
                 <!-- Key facts -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3 pt-8 border-t border-white/10 fade-up delay-300">
                     {t.facts.map((f) => (
-                        <div class="flex items-center justify-end gap-3 text-white/90">
+                        <div class="flex items-center gap-3 text-white/90">
                             <iconify-icon icon={f.icon} width="22" height="22" class="text-amber-400 shrink-0"></iconify-icon>
                             <span class="text-sm">{f.label}</span>
                         </div>
