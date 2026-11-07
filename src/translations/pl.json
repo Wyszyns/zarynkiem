@@ -7,7 +7,7 @@
     "keywords": "apartament Tylicz, nocleg Tylicz, noclegi Tylicz centrum, apartament za rynkiem, nocleg blisko stoku Tylicz",
     "ogTitle": "Apartament za Rynkiem — rodzinny wypoczynek w Tyliczu",
     "ogDescription": "Przestronny apartament 71 m² w centrum Tylicza. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od stoku Master Ski.",
-    "schemaDescription": "Komfortowy apartament 71 m² w centrum Tylicza. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od stoku Master Ski."
+    "schemaDescription": "Komfortowy apartament 71 m² w centrum Tylicza. Zajmuje całe piętro, oddzielone od reszty domu, z niezależnym wejściem. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od stoku Master Ski."
   },
   "langSwitch": {
     "label": "Wybierz język"
@@ -85,7 +85,7 @@
   "about": {
     "eyebrow": "O apartamencie",
     "title": "Miejsce dla całej rodziny albo paczki znajomych",
-    "text": "Nowo urządzone mieszkanie w Tyliczu, jednym z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Każdy ma swoją sypialnię, a trzy łazienki oznaczają koniec porannych kolejek. Po miejscowości kursują darmowe ski-busy.",
+    "text": "Tylicz to jeden z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Każdy ma swoją sypialnię, a trzy łazienki oznaczają koniec porannych kolejek. Po miejscowości kursują darmowe ski-busy. Nowo urządzony apartament zajmuje całe piętro. Jest oddzielony od reszty domu, z niezależnym wejściem.",
     "imgLiving": "Salon z narożną sofą",
     "imgKitchen": "Kuchnia z wyspą barową"
   },
@@ -114,6 +114,11 @@
       "icon": "solar:sun-fog-linear",
       "title": "Ogród i balkon",
       "text": "Altana, grill i balkon z widokiem na stok."
+    },
+    {
+      "icon": "mdi:ski",
+      "title": "Stojak na narty",
+      "text": "Zamykany na kłódkę. Sprzęt bezpiecznie poczeka do rana."
     },
     {
       "icon": "mdi:washing-machine",

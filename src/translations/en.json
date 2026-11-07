@@ -7,7 +7,7 @@
     "keywords": "Tylicz apartment, Tylicz accommodation, apartment near ski slope Tylicz, Krynica-Zdrój apartment, Apartament za Rynkiem",
     "ogTitle": "Apartament za Rynkiem — family stays in Tylicz, Poland",
     "ogDescription": "Spacious 71 m² apartment in the centre of Tylicz. 3 bedrooms, 3 bathrooms, sleeps 9. 600 m from the Master Ski slope.",
-    "schemaDescription": "Comfortable 71 m² apartment in the centre of Tylicz, Poland. 3 bedrooms, 3 bathrooms, sleeps 9. 600 m from the Master Ski slope."
+    "schemaDescription": "Comfortable 71 m² apartment in the centre of Tylicz, Poland. It takes up a whole floor, separate from the rest of the house, with its own independent entrance. 3 bedrooms, 3 bathrooms, sleeps 9. 600 m from the Master Ski slope."
   },
   "langSwitch": {
     "label": "Choose language"
@@ -85,7 +85,7 @@
   "about": {
     "eyebrow": "The apartment",
     "title": "Room for the whole family or a group of friends",
-    "text": "A newly furnished apartment in Tylicz, one of the most popular ski resorts in Poland's Beskid Sądecki mountains. Everyone gets their own bedroom, and three bathrooms mean no morning queues. Free ski buses run through the village.",
+    "text": "Tylicz is one of the most popular ski resorts in Poland's Beskid Sądecki mountains. Everyone gets their own bedroom, and three bathrooms mean no morning queues. Free ski buses run through the village. This newly furnished apartment takes up a whole floor. It is separate from the rest of the house, with its own independent entrance.",
     "imgLiving": "Living room with a corner sofa",
     "imgKitchen": "Kitchen with a breakfast bar"
   },
@@ -114,6 +114,11 @@
       "icon": "solar:sun-fog-linear",
       "title": "Garden and balcony",
       "text": "Gazebo, barbecue and a balcony overlooking the slope."
+    },
+    {
+      "icon": "mdi:ski",
+      "title": "Ski rack",
+      "text": "Locked with a padlock, so your gear is safe overnight."
     },
     {
       "icon": "mdi:washing-machine",
