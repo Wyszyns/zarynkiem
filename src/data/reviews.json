@@ -1,0 +1,178 @@
+{
+  "_help": "Tekst w dwóch językach: \"pl\" i \"en\". Kolejność na liście = kolejność na stronie. \"show\": false ukrywa opinię. \"date\" (opcjonalnie) w formacie RRRR-MM. \"lang\" = język oryginału.",
+  "score": 10,
+  "label": {
+    "pl": "Wyjątkowy",
+    "en": "Exceptional"
+  },
+  "reviewCount": 13,
+  "source": "Booking.com",
+  "url": "https://www.booking.com/hotel/pl/apartament-za-rynkiem.pl.html",
+  "categories": [
+    {
+      "name": {
+        "pl": "Personel",
+        "en": "Staff"
+      },
+      "score": 10
+    },
+    {
+      "name": {
+        "pl": "Czystość",
+        "en": "Cleanliness"
+      },
+      "score": 10
+    },
+    {
+      "name": {
+        "pl": "Komfort",
+        "en": "Comfort"
+      },
+      "score": 10
+    },
+    {
+      "name": {
+        "pl": "Udogodnienia",
+        "en": "Facilities"
+      },
+      "score": 10
+    },
+    {
+      "name": {
+        "pl": "Jakość / cena",
+        "en": "Value for money"
+      },
+      "score": 10
+    },
+    {
+      "name": {
+        "pl": "Lokalizacja",
+        "en": "Location"
+      },
+      "score": 9.9
+    }
+  ],
+  "reviews": [
+    {
+      "show": true,
+      "name": "Robert G.",
+      "score": 5,
+      "lang": "pl",
+      "source": "Google",
+      "text": {
+        "pl": "Polecam serdecznie! Super lokalizacja, cudowne miejsce i życzliwi właściciele. Do dyspozycji otrzymujemy całe piętro budynku, tj. dwie sypialnie, kuchnię, salon z dwiema sofami z funkcją spania, a w nim rozkładany stół. Do dyspozycji gości trzy oddzielne łazienki. Pomieszczenia po kapitalnym remoncie. Wszędzie mega czysto. Kuchnia w pełni wyposażona i jest w niej absolutnie wszystko, co potrzebne, a nawet więcej. Dużo miejsca do parkowania. Kilka minut spacerem do rynku i na stoki narciarskie. Na pewno wrócimy.",
+        "en": "Highly recommended! Great location, a wonderful place and friendly owners. You get the whole floor of the building: two bedrooms, a kitchen and a living room with two sofa beds and a fold-out table. Guests have three separate bathrooms. Everything has been fully renovated and is spotlessly clean. The kitchen is fully equipped and has absolutely everything you need, and more. Plenty of parking space. A few minutes' walk to the market square and the ski slopes. We'll definitely be back."
+      }
+    },
+    {
+      "show": true,
+      "name": "Paweł",
+      "date": "2025-08",
+      "score": 10,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Budynek niepozorny, ale apartament robi wrażenie. Jest salon, osobna kuchnia, dwie sypialnie i trzy łazienki. Wszystko nowe i ładnie urządzone. W salonie ława, która się rozkłada na duży stół. Kuchnia w pełni wyposażona ze zmywarką i pralką. Można się zmieścić w 9 osób. W stosunku jakości do ceny mistrzostwo świata. A najważniejsze, że bardzo mili gospodarze!!! Polecam.",
+        "en": "The building looks modest, but the apartment is impressive. There's a living room, a separate kitchen, two bedrooms and three bathrooms. Everything is new and nicely furnished. The coffee table in the living room unfolds into a big dining table. The kitchen is fully equipped, with a dishwasher and a washing machine. It sleeps 9. Unbeatable value for money. And most importantly, very friendly hosts!!! Recommended."
+      }
+    },
+    {
+      "show": true,
+      "name": "Klaudia W.",
+      "score": 5,
+      "lang": "pl",
+      "source": "Google",
+      "text": {
+        "pl": "Spędziliśmy świetny czas w tym apartamencie! Lokalizacja jest idealna – stok narciarski tuż obok, a widok z okna rewelacyjny. Apartament jest przestronny, z osobnymi łazienkami do każdego pokoju. Kuchnia dobrze wyposażona, więc po całym dniu na nartach można spokojnie przygotować coś pysznego. Możliwość przechowania nart, parking, Wi-Fi i duży telewizor z Netflixem to kolejne plusy. Całość dopełnia piękny wystrój. Zdecydowanie polecam 😊",
+        "en": "We had a great time in this apartment! The location is ideal – the ski slope is right next door and the view from the window is amazing. The apartment is spacious, with a separate bathroom for each room. The kitchen is well equipped, so after a day on the slopes you can easily cook something delicious. Ski storage, parking, Wi-Fi and a big TV with Netflix are more pluses. The beautiful décor rounds it all off. Definitely recommend 😊"
+      }
+    },
+    {
+      "show": true,
+      "name": "Sławomir",
+      "date": "2025-02",
+      "score": 10,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Wszystko było mega, warunki przekroczyły nasze oczekiwania. Czyściutko, kuchnia wyposażona tak, że szok! Przemili gospodarze, wrócimy na bank i będziemy polecać! Dziękujemy 😍",
+        "en": "Everything was great, the place exceeded our expectations. Spotless, and the kitchen is so well equipped it's unbelievable! Lovely hosts, we'll definitely be back and we'll recommend it! Thank you 😍"
+      }
+    },
+    {
+      "show": true,
+      "name": "Aleksandra",
+      "date": "2025-12",
+      "score": 10,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Dużo łazienek, przestronnie, doskonała lokalizacja i przemili gospodarze.",
+        "en": "Lots of bathrooms, spacious, an excellent location and lovely hosts."
+      }
+    },
+    {
+      "show": true,
+      "name": "Anna",
+      "date": "2025-03",
+      "score": 9,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Apartament był wyposażony we wszystko, co jest potrzebne: kuchnia wyposażona w zmywarkę i pralkę oraz pełne wyposażenie kuchenne, 3 osobne łazienki, z dwóch pokoi wyjście na balkon z widokiem na stok narciarski oddalony 10 min piechotą, bardzo blisko do rynku. Polecam miejsce.",
+        "en": "The apartment had everything you need: a kitchen with a dishwasher, washing machine and full kitchenware, 3 separate bathrooms, and two rooms open onto a balcony overlooking the ski slope, a 10-minute walk away. Very close to the market square. I recommend it."
+      }
+    },
+    {
+      "show": true,
+      "name": "Andrzej Ł.",
+      "score": 5,
+      "lang": "pl",
+      "source": "Google",
+      "text": {
+        "pl": "Zdecydowanie polecam!!! Mili właściciele. Apartament doskonale wyposażony. Miejsce parkingowe… miejsce na przechowanie sprzętu narciarskiego… bliskość stoku… same zalety. Dziękujemy za miło spędzony czas.",
+        "en": "Definitely recommend!!! Friendly owners. A perfectly equipped apartment. A parking space… room to store ski gear… close to the slope… nothing but advantages. Thank you for a lovely stay."
+      }
+    },
+    {
+      "show": true,
+      "name": "Mariusz",
+      "date": "2025-02",
+      "score": 10,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Miła obsługa, dobra lokalizacja blisko stoku, dobrze wyposażona kuchnia i pokoje. Czysto i przytulnie.",
+        "en": "Friendly hosts, good location close to the slope, well-equipped kitchen and rooms. Clean and cosy."
+      }
+    },
+    {
+      "show": true,
+      "name": "Danuta",
+      "date": "2025-08",
+      "score": 10,
+      "lang": "pl",
+      "source": "Booking.com",
+      "text": {
+        "pl": "Czysto, super lokalizacja, wyposażenie. Na pewno skorzystam ponownie.",
+        "en": "Clean, great location, well equipped. I'll definitely be back."
+      }
+    },
+    {
+      "show": true,
+      "name": "Karolina G.",
+      "score": 5,
+      "lang": "pl",
+      "source": "Google",
+      "text": {
+        "pl": "Świetne miejsce, bardzo ładnie i schludnie, a przede wszystkim porządek. Bardzo porządny właściciel, dla niego chyba wrócę.",
+        "en": "Great place, very nice and neat, and above all tidy. A really decent owner – I think I'll come back just for him."
+      }
+    }
+  ],
+  "google": {
+    "score": 5,
+    "reviewCount": 4,
+    "url": "https://maps.app.goo.gl/3UqhPzQr4t1cCTej9"
+  }
+}

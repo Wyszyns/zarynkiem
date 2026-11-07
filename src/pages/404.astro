@@ -1,0 +1,28 @@
+---
+// Page shown for broken links (both languages, since we don't know which one the visitor uses)
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import logoSrc from '../assets/logo-dark.png';
+import { useTranslations } from '../i18n';
+
+const pl = useTranslations('pl');
+const en = useTranslations('en');
+const logo = await getImage({ src: logoSrc, width: 240, format: 'webp' });
+---
+<Base lang="pl" title={`${pl.notFound.title} · ${en.notFound.title}`} noindex>
+  <main class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-slate-50">
+    <a href={getRelativeLocaleUrl('pl')}><img src={logo.src} width="120" height="80" alt={pl.a11y.logo} class="h-20 w-auto mb-10"></a>
+    <p class="font-display text-7xl text-amber-500 mb-6">404</p>
+
+    <h1 class="font-display text-2xl sm:text-3xl text-slate-900 mb-2">{pl.notFound.title}</h1>
+    <p class="text-slate-600 mb-5">{pl.notFound.text}</p>
+    <a href={getRelativeLocaleUrl('pl')} class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-full transition-colors">{pl.notFound.back}</a>
+
+    <div class="w-16 h-px bg-slate-300 my-10"></div>
+
+    <h2 lang="en" class="font-display text-xl sm:text-2xl text-slate-900 mb-2">{en.notFound.title}</h2>
+    <p lang="en" class="text-slate-600 mb-5">{en.notFound.text}</p>
+    <a lang="en" href={getRelativeLocaleUrl('en')} class="px-6 py-3 border border-slate-300 hover:bg-white text-slate-800 font-medium rounded-full transition-colors">{en.notFound.back}</a>
+  </main>
+</Base>

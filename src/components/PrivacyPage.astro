@@ -1,0 +1,60 @@
+---
+// Polityka prywatności — treść w src/translations/<język>.json (klucz "privacy")
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import logoSrc from '../assets/logo-dark.png';
+import { phone, email } from '../lib/contact';
+import { useTranslations, fill, languages, defaultLang, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const langs = Object.keys(languages) as Lang[];
+const pageUrl = (l: Lang) => getRelativeLocaleUrl(l, useTranslations(l).privacy.slug);
+const absUrl = (l: Lang) => new URL(pageUrl(l), Astro.site).href;
+const logo = await getImage({ src: logoSrc, width: 240, format: 'webp' });
+const vars = { email, phone: phone.display };
+---
+<Base lang={t.meta.htmlLang} title={t.privacy.metaTitle}>
+  <Fragment slot="head">
+    <link rel="canonical" href={absUrl(lang)}>
+    {langs.map((l) => <link rel="alternate" hreflang={l} href={absUrl(l)}>)}
+    <link rel="alternate" hreflang="x-default" href={absUrl(defaultLang)}>
+  </Fragment>
+
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href={getRelativeLocaleUrl(lang)}><img src={logo.src} width="96" height="64" alt={t.a11y.logo} class="h-16 w-auto"></a>
+      <div class="flex gap-2 text-sm">
+        {langs.filter((l) => l !== lang).map((l) => (
+          <a href={pageUrl(l)} hreflang={l} lang={l} class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100">{languages[l]}</a>
+        ))}
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <a href={getRelativeLocaleUrl(lang)} class="inline-flex items-center gap-2 text-sm text-amber-600 hover:text-amber-700 mb-8">
+      <iconify-icon icon="solar:arrow-left-linear" width="18"></iconify-icon> {t.privacy.back}
+    </a>
+    <h1 class="font-display text-3xl sm:text-4xl font-medium text-slate-900 mb-2">{t.privacy.title}</h1>
+    <p class="text-sm text-slate-500 mb-10">{t.privacy.updated}</p>
+
+    {t.privacy.sections.map((section) => (
+      <section class="mb-10">
+        <h2 class="font-display text-xl sm:text-2xl font-medium text-slate-900 mb-3">{section.h}</h2>
+        {section.p.map((para) => <p class="text-slate-600 leading-relaxed mb-3">{fill(para, vars)}</p>)}
+      </section>
+    ))}
+
+    <p class="text-slate-600">
+      <a href={`mailto:${email}`} class="text-amber-600 hover:text-amber-700">{email}</a> ·
+      <a href={`tel:${phone.e164}`} class="text-amber-600 hover:text-amber-700">{phone.display}</a>
+    </p>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs">
+    {fill(t.footer.copyright, { year: new Date().getFullYear() })}
+  </footer>
+</Base>

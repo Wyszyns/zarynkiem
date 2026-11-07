@@ -1,0 +1,332 @@
+{
+  "meta": {
+    "htmlLang": "en",
+    "ogLocale": "en_GB",
+    "title": "Apartament za Rynkiem, Tylicz",
+    "description": "71 m² apartment in the centre of Tylicz, Poland. 3 bedrooms, 3 bathrooms, up to 9 guests. 600 m from Master Ski. Rated {score}/10 on Booking.com. Free parking and WiFi.",
+    "keywords": "Tylicz apartment, Tylicz accommodation, apartment near ski slope Tylicz, Krynica-Zdrój apartment, Apartament za Rynkiem",
+    "ogTitle": "Apartament za Rynkiem — family stays in Tylicz, Poland",
+    "ogDescription": "Spacious 71 m² apartment in the centre of Tylicz. 3 bedrooms, 3 bathrooms, sleeps 9. 600 m from the Master Ski slope.",
+    "schemaDescription": "Comfortable 71 m² apartment in the centre of Tylicz, Poland. 3 bedrooms, 3 bathrooms, sleeps 9. 600 m from the Master Ski slope."
+  },
+  "langSwitch": {
+    "label": "Choose language"
+  },
+  "nav": [
+    {
+      "href": "#about",
+      "label": "Apartment"
+    },
+    {
+      "href": "#gallery",
+      "label": "Gallery"
+    },
+    {
+      "href": "#reviews",
+      "label": "Reviews"
+    },
+    {
+      "href": "#location",
+      "label": "Location"
+    },
+    {
+      "href": "#faq",
+      "label": "Good to know"
+    }
+  ],
+  "cta": {
+    "contact": "Contact us",
+    "seePhotos": "See photos",
+    "call": "Call"
+  },
+  "a11y": {
+    "logo": "Apartament za Rynkiem logo",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "prevReviews": "Previous reviews",
+    "nextReviews": "Next reviews",
+    "close": "Close",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "photo": "Apartment photo",
+    "photoCounter": "{n} of {total}"
+  },
+  "hero": {
+    "subtitle": "Tylicz · 600 m from the ski slope",
+    "text": "71 m² for up to 9 guests: 3 bedrooms, 3 bathrooms, a fully equipped kitchen and free parking. The slope is an 8-minute walk away, the market square 5 minutes.",
+    "ratingBadge": "{label} · {count} · {source}"
+  },
+  "facts": [
+    {
+      "icon": "solar:home-angle-linear",
+      "label": "71 m²"
+    },
+    {
+      "icon": "solar:bed-linear",
+      "label": "3 bedrooms"
+    },
+    {
+      "icon": "solar:bath-linear",
+      "label": "3 bathrooms"
+    },
+    {
+      "icon": "solar:users-group-rounded-linear",
+      "label": "Up to 9 guests"
+    },
+    {
+      "icon": "mdi:parking",
+      "label": "Free parking"
+    },
+    {
+      "icon": "mdi:wifi",
+      "label": "Fast WiFi"
+    }
+  ],
+  "about": {
+    "eyebrow": "The apartment",
+    "title": "Room for the whole family or a group of friends",
+    "text": "A newly furnished apartment in Tylicz, one of the most popular ski resorts in Poland's Beskid Sądecki mountains. Everyone gets their own bedroom, and three bathrooms mean no morning queues. Free ski buses run through the village.",
+    "imgLiving": "Living room with a corner sofa",
+    "imgKitchen": "Kitchen with a breakfast bar"
+  },
+  "amenities": [
+    {
+      "icon": "solar:bed-linear",
+      "title": "3 bedrooms",
+      "text": "A double bed, three single beds and two sofa beds."
+    },
+    {
+      "icon": "solar:bath-linear",
+      "title": "3 bathrooms",
+      "text": "Three separate bathrooms, each with a shower. There's also a hairdryer in the apartment."
+    },
+    {
+      "icon": "solar:chef-hat-linear",
+      "title": "Full kitchen",
+      "text": "Dishwasher, coffee machine, microwave and full tableware."
+    },
+    {
+      "icon": "solar:tv-linear",
+      "title": "Living room",
+      "text": "Smart TV with Netflix, comfy sofa, fast WiFi."
+    },
+    {
+      "icon": "solar:sun-fog-linear",
+      "title": "Garden and balcony",
+      "text": "Gazebo, barbecue and a balcony overlooking the slope."
+    },
+    {
+      "icon": "mdi:washing-machine",
+      "title": "Washing machine and iron",
+      "text": "Handy for longer stays. Free parking and a baby cot are available too."
+    }
+  ],
+  "gallery": {
+    "title": "Photo gallery",
+    "hint": "Click a photo to enlarge it."
+  },
+  "reviews": {
+    "title": "What our guests say",
+    "summary": "{label} · {count}",
+    "quote": "“{text}”",
+    "swipeHint": "Swipe to see more",
+    "translatedFrom": {
+      "pl": "Translated from Polish",
+      "en": "Translated from English"
+    },
+    "countForms": {
+      "one": "{n} review",
+      "few": "{n} reviews",
+      "many": "{n} reviews",
+      "other": "{n} reviews"
+    }
+  },
+  "location": {
+    "title": "Location",
+    "text": "Kopernika 11, just behind the market square in Tylicz. The slope, restaurants and shops are all within walking distance.",
+    "nearbyTitle": "Nearby",
+    "openInMaps": "Open in Google Maps",
+    "mapTitle": "Map: Apartament za Rynkiem",
+    "address": "Kopernika 11, 33-383 Tylicz, Poland"
+  },
+  "distances": [
+    {
+      "icon": "mdi:snowflake",
+      "name": "Master Ski Family slope",
+      "value": "600 m · 8 min walk"
+    },
+    {
+      "icon": "mdi:ski",
+      "name": "Tylicz Ski slope (free ski bus)",
+      "value": "2.2 km"
+    },
+    {
+      "icon": "solar:shop-linear",
+      "name": "Market square, restaurants, shops",
+      "value": "350 m"
+    },
+    {
+      "icon": "solar:city-linear",
+      "name": "Krynica-Zdrój town centre",
+      "value": "10 km"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "Restauracja Tylicka",
+      "distance": "350 m",
+      "text": "On the market square. Regional food and the famous Tylicz zapiekanka."
+    },
+    {
+      "name": "Góralska Chata u Gogoca",
+      "distance": "350 m",
+      "text": "By the market square. Homely feel, kwaśnica (sauerkraut soup) and lamb."
+    },
+    {
+      "name": "Restauracja Pokusa",
+      "distance": "500 m",
+      "text": "Steaks and Polish cuisine."
+    },
+    {
+      "name": "Wiejska Chata",
+      "distance": "700 m",
+      "text": "Generous portions, fair prices and a fireplace."
+    }
+  ],
+  "faq": {
+    "title": "Good to know",
+    "items": [
+      {
+        "icon": "solar:clock-circle-linear",
+        "q": "Check-in and check-out",
+        "a": "Check-in 15:00–18:00 (please let us know your arrival time in advance). Check-out 8:00–11:00."
+      },
+      {
+        "icon": "solar:users-group-rounded-linear",
+        "q": "Children and baby cot",
+        "a": "Children of all ages are welcome. A baby cot (0–3 years) is free of charge. Extra beds are not available."
+      },
+      {
+        "icon": "mdi:parking",
+        "q": "Parking and WiFi",
+        "a": "Free private parking on site (no reservation needed). Free WiFi throughout the apartment."
+      },
+      {
+        "icon": "solar:forbidden-circle-linear",
+        "q": "Parties and smoking",
+        "a": "Smoking is not allowed anywhere in the apartment. No parties, hen or stag events."
+      }
+    ]
+  },
+  "faqSchema": [
+    {
+      "q": "How far is the ski slope?",
+      "a": "The Master Ski Family slope is just 600 metres from the apartment, and Tylicz Ski is 2.2 km away. Free ski buses run through the village."
+    },
+    {
+      "q": "How many people does the apartment sleep?",
+      "a": "The apartment comfortably sleeps up to 9 people in 3 bedrooms, with 3 private bathrooms."
+    },
+    {
+      "q": "Is parking free?",
+      "a": "Yes. Free private parking is available on site and does not need to be reserved."
+    },
+    {
+      "q": "How far is Krynica-Zdrój?",
+      "a": "Krynica-Zdrój is about 10 km from Tylicz, roughly a 15-minute drive."
+    }
+  ],
+  "contact": {
+    "title": "Get in touch",
+    "text": "Message or call us and we'll check availability for your dates and answer any questions.",
+    "phoneLabel": "Phone / WhatsApp",
+    "host": "Patryk Wyszyński (Polish, English)",
+    "bookingLink": "See the listing and reviews →",
+    "facebookName": "Apartament za Rynkiem",
+    "formTitle": "Ask about your dates",
+    "formText": "We'll prepare the message for you — choose whether to send it by email or via WhatsApp.",
+    "name": "Name *",
+    "namePlaceholder": "John",
+    "checkin": "Arrival *",
+    "checkout": "Departure *",
+    "guests": "Number of guests *",
+    "message": "Message",
+    "messagePlaceholder": "E.g. we'll be coming with two children",
+    "whatsappMessage": [
+      "Hello, my name is {name}.",
+      "I'm asking about a stay at Apartament za Rynkiem: {from} – {to}, {guests} guests."
+    ],
+    "emailLabel": "Email",
+    "submitEmail": "Send by email",
+    "submitWhatsapp": "Send via WhatsApp",
+    "emailSubject": "Stay enquiry: {from} – {to}",
+    "preferDirect": "Prefer to write or call directly?",
+    "copyPhone": "Copy phone number",
+    "copyEmail": "Copy email address",
+    "copied": "Copied"
+  },
+  "footer": {
+    "copyright": "© {year} Apartament za Rynkiem, Tylicz",
+    "privacy": "Privacy policy"
+  },
+  "cookie": {
+    "text": "This site shows a Google map, which uses cookies. More in our {link}.",
+    "linkText": "privacy policy",
+    "ok": "OK"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist or has been moved.",
+    "back": "Back to the home page"
+  },
+  "privacy": {
+    "slug": "privacy-policy",
+    "title": "Privacy policy",
+    "metaTitle": "Privacy policy — Apartament za Rynkiem, Tylicz",
+    "updated": "Last updated: November 2026",
+    "back": "Back to the home page",
+    "sections": [
+      {
+        "h": "Data controller",
+        "p": [
+          "Your personal data is controlled by Patryk Wyszyński, who rents out Apartament za Rynkiem, Kopernika 11, 33-383 Tylicz, Poland. Contact: {email}, phone {phone}."
+        ]
+      },
+      {
+        "h": "What data we process and why",
+        "p": [
+          "When you contact us by phone, email or WhatsApp, we process the data you give us (e.g. your name, phone number, email address, dates of stay, number of guests and your message). We do this to answer your enquiry and handle your booking (Art. 6(1)(b) GDPR), to meet legal obligations such as tax rules (Art. 6(1)(c) GDPR) and, if necessary, to pursue claims (Art. 6(1)(f) GDPR).",
+          "The “Ask about your dates” form does not send any data to our server. Clicking a button opens your email program or WhatsApp with the message ready, and you send it from there. If you use WhatsApp, your data is also processed by Meta Platforms Ireland Ltd. under its privacy policy.",
+          "This site does not collect visitor statistics and uses no advertising or marketing tools."
+        ]
+      },
+      {
+        "h": "Third-party services",
+        "p": [
+          "Hosting: the site is served by GitHub Pages (GitHub, Inc.). The server may log IP addresses and browser details for security purposes.",
+          "Google Maps: the “Location” section shows a Google map (Google Ireland Ltd.). Once it loads, Google may set cookies and process your IP address, including outside the European Economic Area. Details: policies.google.com/privacy.",
+          "Icons: some icons on the site are loaded from Iconify (api.iconify.design), which receives your browser's IP address.",
+          "Bookings made through Booking.com are covered by Booking.com's privacy policy."
+        ]
+      },
+      {
+        "h": "How long we keep data",
+        "p": [
+          "We keep enquiry data for as long as needed to reply and to handle your stay. Data required by tax law is kept for the period that law requires (usually 5 years)."
+        ]
+      },
+      {
+        "h": "Your rights",
+        "p": [
+          "You have the right to access, correct, delete and port your data, to restrict its processing and to object to it. To use these rights, email {email}. You may also lodge a complaint with the Polish data protection authority (Prezes Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warsaw)."
+        ]
+      },
+      {
+        "h": "Cookies and browser storage",
+        "p": [
+          "The site itself does not use cookies. It only stores a note in your browser's local storage that you closed the map notice, so it isn't shown again. The Google map described above may set cookies. You can delete or block them in your browser settings."
+        ]
+      }
+    ]
+  }
+}

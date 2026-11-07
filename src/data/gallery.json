@@ -1,0 +1,76 @@
+{
+  "_help": "Opis zdjęcia (alt) w dwóch językach: \"pl\" i \"en\".",
+  "hero": {
+    "src": "1.jpg",
+    "alt": {
+      "pl": "Pokój z trzema pojedynczymi łóżkami w Apartamencie za Rynkiem w Tyliczu",
+      "en": "Room with three single beds at Apartament za Rynkiem, Tylicz"
+    }
+  },
+  "socialImage": "og-image.jpg",
+  "photos": [
+    {
+      "src": "balkon-zima.jpg",
+      "alt": {
+        "pl": "Widok z balkonu na stok Master Ski zimą",
+        "en": "View from the balcony of the Master Ski slope in winter"
+      }
+    },
+    {
+      "src": "2.jpg",
+      "alt": {
+        "pl": "Salon z narożną sofą",
+        "en": "Living room with a corner sofa"
+      }
+    },
+    {
+      "src": "sypialnia-zielona.jpg",
+      "alt": {
+        "pl": "Sypialnia z podwójnym łóżkiem",
+        "en": "Bedroom with a double bed"
+      }
+    },
+    {
+      "src": "21.jpg",
+      "alt": {
+        "pl": "Sypialnia z szafą i podwójnym łóżkiem",
+        "en": "Bedroom with a wardrobe and a double bed"
+      }
+    },
+    {
+      "src": "pokoj-trzyosobowy.jpg",
+      "alt": {
+        "pl": "Pokój z trzema pojedynczymi łóżkami",
+        "en": "Room with three single beds"
+      }
+    },
+    {
+      "src": "kuchnia.jpg",
+      "alt": {
+        "pl": "W pełni wyposażona kuchnia z wyspą barową",
+        "en": "Fully equipped kitchen with a breakfast bar"
+      }
+    },
+    {
+      "src": "5.jpg",
+      "alt": {
+        "pl": "Łazienka z prysznicem",
+        "en": "Bathroom with a shower"
+      }
+    },
+    {
+      "src": "8.jpg",
+      "alt": {
+        "pl": "Altana w ogrodzie wieczorem",
+        "en": "Garden gazebo in the evening"
+      }
+    },
+    {
+      "src": "4.jpg",
+      "alt": {
+        "pl": "Budynek apartamentu zimą",
+        "en": "The apartment building in winter"
+      }
+    }
+  ]
+}

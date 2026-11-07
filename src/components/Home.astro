@@ -1,0 +1,767 @@
+---
+// Strona główna apartamentu — wspólna dla wszystkich języków.
+// Teksty:            src/translations/pl.json, src/translations/en.json
+// Ocena i opinie:    src/data/reviews.json  (tekst opinii jako { "pl": ..., "en": ... })
+// Zdjęcia:           src/data/gallery.json  (opisy jako { "pl": ..., "en": ... }),
+//                    pliki zdjęć w src/assets/photos/ (Astro sam je zmniejsza i konwertuje)
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { photo, widthsFor } from '../lib/photos';
+import { phone, email, facebook, mapsLink } from '../lib/contact';
+import logoLightSrc from '../assets/logo-light.png';
+import logoDarkSrc from '../assets/logo-dark.png';
+import rating from '../data/reviews.json';
+import gallery from '../data/gallery.json';
+import { useTranslations, pick, fill, languages, defaultLang, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const img = (file: string) => `${import.meta.env.BASE_URL}/images/${file}`.replace(/\/{2,}/g, '/');
+const socialImage = new URL(img(gallery.socialImage), Astro.site).href;
+
+// Adresy stron w każdym języku (dla przełącznika i Google)
+const langUrl = (l: Lang) => getRelativeLocaleUrl(l);
+const absUrl = (l: Lang) => new URL(langUrl(l), Astro.site).href;
+const otherLangs = (Object.keys(languages) as Lang[]);
+
+// 9.9 -> "9,9" po polsku, "9.9" po angielsku
+const fmt = (n: number) => n.toLocaleString(lang);
+const score = fmt(rating.score);
+const ratingLabel = pick(rating.label, lang);
+const monthYear = (ym: string) =>
+  new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric' }).format(new Date(`${ym}-01T12:00:00`));
+
+// Zdjęcia: wersje zoptymalizowane (WebP, kilka rozmiarów)
+const heroMeta = photo(gallery.hero.src);
+const photos = await Promise.all(gallery.photos.map(async (p) => {
+  const meta = photo(p.src);
+  const full = await getImage({ src: meta, width: Math.min(1800, meta.width), format: 'webp', quality: 80 });
+  return { meta, alt: pick(p.alt, lang), full: full.src };
+}));
+const logoLight = await getImage({ src: logoLightSrc, width: 300, format: 'webp' });
+const logoDark = await getImage({ src: logoDarkSrc, width: 300, format: 'webp' });
+const privacyUrl = getRelativeLocaleUrl(lang, t.privacy.slug);
+const [cookieBefore, cookieAfter] = t.cookie.text.split('{link}');
+
+// Liczba opinii z poprawną odmianą (13 opinii, 4 opinie / 13 reviews)
+const plural = new Intl.PluralRules(lang);
+const countText = (n: number) => fill(t.reviews.countForms[plural.select(n) as keyof typeof t.reviews.countForms] ?? t.reviews.countForms.other, { n });
+
+// Oceny z obu serwisów — pokazywane obok siebie, w tym samym stylu
+const ratingSources = [
+  { name: rating.source, url: rating.url, score: fmt(rating.score), label: ratingLabel, count: rating.reviewCount, box: 'bg-blue-600 text-white' },
+  ...(rating.google ? [{ name: 'Google', url: rating.google.url, score: rating.google.score.toLocaleString(lang, { minimumFractionDigits: 1 }), label: '★★★★★', count: rating.google.reviewCount, box: 'bg-white text-slate-900' }] : []),
+];
+
+// Opinie z "show": false są ukryte
+const shownReviews = rating.reviews.filter((r) => r.show !== false);
+const avatarColors = [
+  'bg-emerald-100 text-emerald-700',
+  'bg-blue-100 text-blue-700',
+  'bg-amber-100 text-amber-700',
+  'bg-rose-100 text-rose-700',
+  'bg-violet-100 text-violet-700',
+  'bg-teal-100 text-teal-700',
+];
+
+// Telefon, e-mail, linki: src/lib/contact.ts
+const mapsEmbed = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d21.0190255!3d49.3963021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473e77b7e081faf3%3A0x6655764ad8acbaf9!2sApartament%20Za%20Rynkiem!5e0!3m2!1s${lang}!2spl!4v1700000000000!5m2!1s${lang}!2spl`;
+
+const schemaLodging = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: 'Apartament za Rynkiem',
+  description: t.meta.schemaDescription,
+  inLanguage: lang,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Kopernika 11',
+    addressLocality: 'Tylicz',
+    postalCode: '33-383',
+    addressRegion: 'małopolskie',
+    addressCountry: 'PL',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 49.3963021, longitude: 21.0190255 },
+  telephone: phone.e164,
+  email,
+  url: absUrl(lang),
+  hasMap: mapsLink,
+  image: socialImage,
+  numberOfRooms: 3,
+  floorSize: { '@type': 'QuantitativeValue', value: 71, unitCode: 'MTK' },
+  amenityFeature: ['Free WiFi', 'Free Parking', 'Kitchen', 'Balcony', 'BBQ Facilities', 'Washing Machine', 'Netflix']
+    .map((name) => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
+  checkinTime: '15:00',
+  checkoutTime: '11:00',
+  smokingAllowed: false,
+  maximumAttendeeCapacity: 9,
+};
+const schemaFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: t.faqSchema.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Base lang={t.meta.htmlLang} title={t.meta.title} description={fill(t.meta.description, { score })}>
+<Fragment slot="head">
+<meta name="keywords" content={t.meta.keywords}>
+<link rel="canonical" href={absUrl(lang)}>
+{otherLangs.map((l) => <link rel="alternate" hreflang={l} href={absUrl(l)}>)}
+<link rel="alternate" hreflang="x-default" href={absUrl(defaultLang)}>
+<meta property="og:title" content={t.meta.ogTitle}>
+<meta property="og:description" content={t.meta.ogDescription}>
+<meta property="og:type" content="website">
+<meta property="og:locale" content={t.meta.ogLocale}>
+<meta property="og:url" content={absUrl(lang)}>
+<meta property="og:image" content={socialImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaLodging)}></script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaFaq)}></script>
+</Fragment>
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 lg:h-24">
+                <!-- Logo -->
+                <a href={langUrl(lang)} class="group">
+                    <img id="headerLogo" src={logoLight.src} data-light={logoLight.src} data-dark={logoDark.src} width="120" height="80" alt={t.a11y.logo} class="h-[4.5rem] lg:h-20 w-auto transition-all duration-500 group-hover:scale-105">
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-8">
+                    {t.nav.map((n) => (
+                        <a href={n.href} class="nav-link text-sm font-medium text-white/80 hover:text-amber-400 transition-colors">{n.label}</a>
+                    ))}
+                    <div class="flex items-center gap-1 text-sm font-medium" aria-label={t.langSwitch.label}>
+                        {otherLangs.map((l, i) => (
+                            <>
+                                {i > 0 && <span class="nav-link text-white/80 opacity-40">|</span>}
+                                {l === lang
+                                    ? <span class="nav-link text-white/80 px-1 font-semibold" aria-current="true">{l.toUpperCase()}</span>
+                                    : <a href={langUrl(l)} hreflang={l} lang={l} title={languages[l]} class="nav-link text-white/80 opacity-60 hover:opacity-100 hover:text-amber-400 px-1 transition">{l.toUpperCase()}</a>}
+                            </>
+                        ))}
+                    </div>
+                    <a href="#contact" class="px-5 py-2.5 bg-amber-500 text-white text-sm font-medium rounded-full hover:bg-amber-600 transition-colors shadow-lg hover:shadow-amber-600/20">
+                        {t.cta.contact}
+                    </a>
+                </div>
+
+                <!-- Mobile: language + menu button -->
+                <div class="lg:hidden flex items-center gap-1">
+                    {otherLangs.filter((l) => l !== lang).map((l) => (
+                        <a href={langUrl(l)} hreflang={l} lang={l} title={languages[l]} class="nav-link text-sm font-semibold text-white/80 px-2 py-2">{l.toUpperCase()}</a>
+                    ))}
+                    <button id="menuButton" onclick="toggleMenu()" aria-label={t.a11y.menu} aria-expanded="false" aria-controls="mobileMenu" class="p-2 text-white hover:bg-white/10 rounded-lg transition-colors">
+                        <iconify-icon icon="solar:hamburger-menu-linear" width="24" height="24"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" role="dialog" aria-modal="true" aria-label={t.a11y.menu} class="hidden fixed inset-0 z-[65] bg-white pt-24 px-6 pb-10 overflow-y-auto overscroll-contain lg:hidden">
+        <a href={langUrl(lang)} onclick="toggleMenu()" class="absolute top-1 left-4"><img src={logoDark.src} width="120" height="80" alt={t.a11y.logo} class="h-[4.5rem] w-auto"></a>
+        <div class="flex flex-col gap-6 text-center">
+            {t.nav.map((n) => (
+                <a href={n.href} onclick="toggleMenu()" class="text-lg font-medium text-slate-800">{n.label}</a>
+            ))}
+            <a href="#contact" onclick="toggleMenu()" class="mt-4 px-6 py-4 bg-amber-500 text-white text-base font-medium rounded-xl shadow-xl shadow-amber-500/20">
+                {t.cta.contact}
+            </a>
+            <div class="flex justify-center gap-3 text-sm" aria-label={t.langSwitch.label}>
+                {otherLangs.map((l) => (
+                    l === lang
+                        ? <span class="px-3 py-1.5 rounded-full bg-slate-900 text-white font-medium">{languages[l]}</span>
+                        : <a href={langUrl(l)} hreflang={l} lang={l} class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600">{languages[l]}</a>
+                ))}
+            </div>
+        </div>
+        <button onclick="toggleMenu()" aria-label={t.a11y.closeMenu} class="absolute top-4 right-3 p-2 text-slate-500 hover:text-slate-800">
+            <iconify-icon icon="solar:close-circle-linear" width="32" height="32"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="top" class="relative min-h-[100svh] flex items-center pt-20 lg:pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <Image src={heroMeta} alt={pick(gallery.hero.alt, lang)} widths={widthsFor(heroMeta, [640, 960, 1280, 1920, 2400])} sizes="100vw" quality={72} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-slate-900/20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+            <div class="max-w-2xl ml-auto text-right">
+                <div class="flex flex-wrap justify-end gap-2 mb-6 fade-up">
+                    {ratingSources.map((r) => (
+                        <a href="#reviews" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium hover:bg-white/20 transition-colors">
+                            <span class={`px-1.5 py-0.5 rounded font-bold ${r.box}`}>{r.score}</span>
+                            <span>{fill(t.hero.ratingBadge, { label: r.label, count: countText(r.count), source: r.name })}</span>
+                        </a>
+                    ))}
+                </div>
+
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-tight mb-6 fade-up delay-100">
+                    Apartament za Rynkiem
+                    <span class="block text-amber-400 text-2xl sm:text-3xl lg:text-4xl mt-3">{t.hero.subtitle}</span>
+                </h1>
+
+                <p class="text-lg text-slate-200 mb-8 font-light leading-relaxed fade-up delay-200">{t.hero.text}</p>
+
+                <div class="flex flex-wrap justify-end gap-4 mb-10 fade-up delay-300">
+                    <a href="#contact" class="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-full transition-all hover:scale-105 shadow-lg shadow-amber-500/30 flex items-center gap-2">
+                        <span>{t.cta.contact}</span>
+                        <iconify-icon icon="solar:arrow-right-linear" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="#gallery" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium rounded-full transition-all flex items-center gap-2">
+                        <span>{t.cta.seePhotos}</span>
+                        <iconify-icon icon="solar:gallery-linear" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+
+                <!-- Key facts -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3 pt-8 border-t border-white/10 fade-up delay-300">
+                    {t.facts.map((f) => (
+                        <div class="flex items-center justify-end gap-3 text-white/90">
+                            <iconify-icon icon={f.icon} width="22" height="22" class="text-amber-400 shrink-0"></iconify-icon>
+                            <span class="text-sm">{f.label}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About + Amenities -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-4 text-amber-600 font-medium text-sm uppercase tracking-wider">
+                        <span class="w-8 h-[1px] bg-amber-600"></span>
+                        {t.about.eyebrow}
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl text-slate-900 font-medium tracking-tight mb-6">{t.about.title}</h2>
+                    <p class="text-slate-600 leading-relaxed mb-8">{t.about.text}</p>
+
+                    <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+                        {t.amenities.map((a) => (
+                            <li class="flex gap-3">
+                                <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center shrink-0">
+                                    <iconify-icon icon={a.icon} width="20" height="20"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-slate-900">{a.title}</p>
+                                    <p class="text-sm text-slate-500 leading-relaxed">{a.text}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <Image src={photo('2.jpg')} alt={t.about.imgLiving} widths={[360, 560, 720]} sizes="(min-width: 1024px) 280px, 45vw" class="w-full aspect-[3/4] object-cover object-center rounded-2xl shadow-lg translate-y-8" />
+                    <Image src={photo('kuchnia.jpg')} alt={t.about.imgKitchen} widths={[360, 560, 720]} sizes="(min-width: 1024px) 280px, 45vw" class="w-full aspect-[3/4] object-cover rounded-2xl shadow-lg" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="font-display text-3xl sm:text-4xl text-slate-900 font-medium tracking-tight mb-2">{t.gallery.title}</h2>
+                <p class="text-slate-600">{t.gallery.hint}</p>
+            </div>
+
+            <div class="masonry">
+                {photos.map((p, i) => (
+                    <div class="masonry-item group relative overflow-hidden rounded-2xl cursor-pointer" onclick={`openLightbox(${i})`}>
+                        <Image src={p.meta} alt={p.alt} data-full={p.full} widths={widthsFor(p.meta, [400, 640, 900])} sizes="(min-width: 1024px) 400px, 50vw" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700" />
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <iconify-icon icon="solar:maximize-square-linear" class="text-white" width="32" height="32"></iconify-icon>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-medium text-slate-900 mb-3">{t.reviews.title}</h2>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        {ratingSources.map((r) => (
+                            <a href={r.url} target="_blank" rel="noopener" class="flex items-center gap-3 p-3 pr-5 rounded-2xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors">
+                                <span class={`min-w-[3rem] text-center px-2.5 py-2 rounded-xl font-bold text-lg ${r.box === 'bg-white text-slate-900' ? 'bg-slate-900 text-white' : r.box}`}>{r.score}</span>
+                                <span>
+                                    <span class="block font-medium text-slate-900">{r.name}</span>
+                                    <span class="block text-sm text-slate-500">{fill(t.reviews.summary, { label: r.label, count: countText(r.count) })}</span>
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+                <div class="hidden md:flex gap-2 shrink-0">
+                    <button type="button" onclick="scrollReviews(-1)" aria-label={t.a11y.prevReviews} class="w-11 h-11 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 flex items-center justify-center transition-colors">
+                        <iconify-icon icon="solar:alt-arrow-left-linear" width="22"></iconify-icon>
+                    </button>
+                    <button type="button" onclick="scrollReviews(1)" aria-label={t.a11y.nextReviews} class="w-11 h-11 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 flex items-center justify-center transition-colors">
+                        <iconify-icon icon="solar:alt-arrow-right-linear" width="22"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div id="reviewTrack" class="no-scrollbar flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+                {shownReviews.map((r, i) => (
+                    <article class="snap-start shrink-0 w-[85%] sm:w-[60%] md:w-[calc((100%-2.5rem)/3)] bg-slate-50 p-7 rounded-2xl border border-slate-100 flex flex-col">
+                        <p class="text-slate-600 italic mb-6 flex-1">{fill(t.reviews.quote, { text: pick(r.text, lang) })}</p>
+                        <div class="flex items-center gap-3">
+                            <div class={`w-10 h-10 rounded-full ${avatarColors[i % avatarColors.length]} flex items-center justify-center font-medium`}>{r.name.charAt(0)}</div>
+                            <div>
+                                <p class="font-medium text-slate-900">{r.name}</p>
+                                <p class="text-xs text-slate-500">{r.source}{r.date && ` · ${monthYear(r.date)}`}</p>
+                                {r.lang && r.lang !== lang && (
+                                    <p class="text-xs text-slate-400 mt-0.5">{pick(t.reviews.translatedFrom, r.lang as Lang)}</p>
+                                )}
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+            <p class="md:hidden text-xs text-slate-400 mt-2 flex items-center gap-1">
+                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon> {t.reviews.swipeHint}
+            </p>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location" class="py-20 bg-slate-900 text-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4">{t.location.title}</h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed">{t.location.text}</p>
+
+                    <ul class="space-y-3 text-sm mb-10">
+                        {t.distances.map((d) => (
+                            <li class="flex justify-between gap-4 border-b border-slate-800 pb-3">
+                                <span class="flex items-center gap-2 text-slate-300">
+                                    <iconify-icon icon={d.icon} class="text-amber-500 shrink-0" width="18"></iconify-icon>
+                                    {d.name}
+                                </span>
+                                <span class="text-white font-medium text-right">{d.value}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <h3 class="font-medium text-white mb-4">{t.location.nearbyTitle}</h3>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        {t.nearby.map((n) => (
+                            <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-800">
+                                <div class="flex items-center justify-between gap-2 mb-1">
+                                    <p class="font-medium text-white">{n.name}</p>
+                                    <span class="text-xs text-amber-400 shrink-0">{n.distance}</span>
+                                </div>
+                                <p class="text-xs text-slate-400 leading-relaxed">{n.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Map (loads automatically when the visitor scrolls near it) -->
+                <div class="min-h-[420px] lg:min-h-full rounded-3xl overflow-hidden bg-slate-800 relative">
+                    <iframe src={mapsEmbed} title={t.location.mapTitle} class="absolute inset-0 w-full h-full" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="absolute bottom-4 left-4 right-4 bg-white text-slate-900 p-4 rounded-xl shadow-lg z-10">
+                        <p class="font-medium">Apartament za Rynkiem</p>
+                        <p class="text-sm text-slate-500">{t.location.address}</p>
+                        <a href={mapsLink} target="_blank" rel="noopener" class="inline-flex items-center gap-1 mt-2 text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors">
+                            {t.location.openInMaps}
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="16"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-3xl text-center font-medium text-slate-900 mb-10">{t.faq.title}</h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 divide-y divide-slate-100">
+                {t.faq.items.map((q) => (
+                    <details class="group p-5 sm:p-6">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-medium text-slate-900">
+                            <span class="flex items-center gap-3">
+                                <iconify-icon icon={q.icon} class="text-amber-500 shrink-0" width="20"></iconify-icon>
+                                {q.q}
+                            </span>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-slate-400 transition-transform group-open:rotate-180 shrink-0" width="20"></iconify-icon>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 ml-8 leading-relaxed">{q.a}</p>
+                    </details>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-medium text-slate-900 mb-4">{t.contact.title}</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">{t.contact.text}</p>
+
+                    <div class="space-y-5">
+                        <!-- Phone: tap to call, or copy the number -->
+                        <div class="flex items-start gap-4">
+                            <a href={`tel:${phone.e164}`} tabindex="-1" aria-hidden="true" class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 hover:bg-amber-100 transition-colors">
+                                <iconify-icon icon="solar:phone-linear" width="24"></iconify-icon>
+                            </a>
+                            <div>
+                                <p class="font-medium text-slate-900">{t.contact.phoneLabel}</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <a href={`tel:${phone.e164}`} class="text-slate-600 hover:text-amber-600 transition-colors">{phone.display}</a>
+                                    <button type="button" class="copy-btn inline-flex items-center gap-1 px-1.5 py-1 rounded-md text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-colors" data-copy={phone.display} aria-label={t.contact.copyPhone} title={t.contact.copyPhone}>
+                                        <iconify-icon icon="solar:copy-linear" class="copy-icon" width="18"></iconify-icon>
+                                        <iconify-icon icon="solar:check-circle-linear" class="done-icon hidden text-emerald-600" width="18"></iconify-icon>
+                                        <span class="done-text hidden text-xs font-medium text-emerald-600" aria-live="polite">{t.contact.copied}</span>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">{t.contact.host}</p>
+                            </div>
+                        </div>
+
+                        <!-- Email: click to write, or copy the address -->
+                        <div class="flex items-start gap-4">
+                            <a href={`mailto:${email}`} tabindex="-1" aria-hidden="true" class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 hover:bg-amber-100 transition-colors">
+                                <iconify-icon icon="solar:letter-linear" width="24"></iconify-icon>
+                            </a>
+                            <div>
+                                <p class="font-medium text-slate-900">{t.contact.emailLabel}</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <a href={`mailto:${email}`} class="text-slate-600 hover:text-amber-600 transition-colors break-all">{email}</a>
+                                    <button type="button" class="copy-btn inline-flex items-center gap-1 px-1.5 py-1 rounded-md text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-colors" data-copy={email} aria-label={t.contact.copyEmail} title={t.contact.copyEmail}>
+                                        <iconify-icon icon="solar:copy-linear" class="copy-icon" width="18"></iconify-icon>
+                                        <iconify-icon icon="solar:check-circle-linear" class="done-icon hidden text-emerald-600" width="18"></iconify-icon>
+                                        <span class="done-text hidden text-xs font-medium text-emerald-600" aria-live="polite">{t.contact.copied}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href={rating.url} target="_blank" rel="noopener" class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover:bg-amber-100 transition-colors">
+                                <iconify-icon icon="solar:star-linear" width="22"></iconify-icon>
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-900">Booking.com</p>
+                                <p class="text-amber-600 group-hover:text-amber-700 mt-1 transition-colors">{t.contact.bookingLink}</p>
+                            </div>
+                        </a>
+
+                        <a href={facebook} target="_blank" rel="noopener" class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover:bg-amber-100 transition-colors">
+                                <iconify-icon icon="brandico:facebook-rect" width="20"></iconify-icon>
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-900">Facebook</p>
+                                <p class="text-amber-600 group-hover:text-amber-700 mt-1 transition-colors">{t.contact.facebookName}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enquiry form: opens the visitor's email program or WhatsApp with the message filled in -->
+                <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <h3 class="font-medium text-slate-900 mb-1">{t.contact.formTitle}</h3>
+                    <p class="text-sm text-slate-500 mb-6">{t.contact.formText}</p>
+                    <form id="enquiryForm" data-wa={phone.whatsapp} data-email={email} data-subject={t.contact.emailSubject} data-msg={JSON.stringify(t.contact.whatsappMessage)} class="space-y-5">
+                        <div>
+                            <label for="f-name" class="block text-sm font-medium text-slate-700 mb-2">{t.contact.name}</label>
+                            <input id="f-name" name="name" type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800" placeholder={t.contact.namePlaceholder}>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="f-in" class="block text-sm font-medium text-slate-700 mb-2">{t.contact.checkin}</label>
+                                <input id="f-in" name="checkin" type="date" required class="w-full px-3 py-3 rounded-xl border border-slate-200 bg-white text-slate-800">
+                            </div>
+                            <div>
+                                <label for="f-out" class="block text-sm font-medium text-slate-700 mb-2">{t.contact.checkout}</label>
+                                <input id="f-out" name="checkout" type="date" required class="w-full px-3 py-3 rounded-xl border border-slate-200 bg-white text-slate-800">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="f-guests" class="block text-sm font-medium text-slate-700 mb-2">{t.contact.guests}</label>
+                            <select id="f-guests" name="guests" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800">
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <option value={n} selected={n === 4}>{n}</option>)}
+                            </select>
+                        </div>
+                        <div>
+                            <label for="f-msg" class="block text-sm font-medium text-slate-700 mb-2">{t.contact.message}</label>
+                            <textarea id="f-msg" name="message" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800" placeholder={t.contact.messagePlaceholder}></textarea>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <button type="submit" name="via" value="email" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2">
+                                <iconify-icon icon="solar:letter-linear" width="22"></iconify-icon>
+                                {t.contact.submitEmail}
+                            </button>
+                            <button type="submit" name="via" value="whatsapp" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2">
+                                <iconify-icon icon="ic:baseline-whatsapp" width="22"></iconify-icon>
+                                {t.contact.submitWhatsapp}
+                            </button>
+                        </div>
+                        <p class="text-xs text-center text-slate-500 leading-relaxed">{t.contact.preferDirect}<br><a href={`mailto:${email}`} class="text-amber-600 hover:text-amber-700">{email}</a> · <a href={`tel:${phone.e164}`} class="text-amber-600 hover:text-amber-700">{phone.display}</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 pt-12 pb-28 lg:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <img src={logoLight.src} width="84" height="56" alt={t.a11y.logo} loading="lazy" class="h-14 w-auto">
+            <p class="text-sm text-center leading-relaxed">{t.location.address}<br class="sm:hidden"><span class="hidden sm:inline"> · </span><a href={`tel:${phone.e164}`} class="hover:text-amber-400 transition-colors">{phone.display}</a> · <a href={`mailto:${email}`} class="hover:text-amber-400 transition-colors">{email}</a></p>
+            <div class="flex items-center gap-5">
+                {otherLangs.filter((l) => l !== lang).map((l) => (
+                    <a href={langUrl(l)} hreflang={l} lang={l} class="text-sm hover:text-amber-500 transition-colors">{languages[l]}</a>
+                ))}
+                <a href={facebook} target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-amber-500 transition-colors">
+                    <iconify-icon icon="brandico:facebook-rect" width="22"></iconify-icon>
+                </a>
+                <a href={rating.url} target="_blank" rel="noopener" aria-label="Booking.com" class="hover:text-amber-500 transition-colors">
+                    <iconify-icon icon="solar:star-bold" width="22"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <p class="text-center text-xs text-slate-500 mt-8">{fill(t.footer.copyright, { year: new Date().getFullYear() })} · <a href={privacyUrl} class="hover:text-amber-400 underline-offset-2 hover:underline">{t.footer.privacy}</a></p>
+    </footer>
+
+    <!-- Mobile sticky contact bar (appears after the hero) -->
+    <div id="mobileBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur border-t border-slate-200 grid grid-cols-2 gap-3 translate-y-full transition-transform duration-300">
+        <a href={`tel:${phone.e164}`} class="py-3 rounded-xl border border-slate-200 text-slate-800 font-medium flex items-center justify-center gap-2">
+            <iconify-icon icon="solar:phone-linear" width="20"></iconify-icon> {t.cta.call}
+        </a>
+        <a href="#contact" class="py-3 rounded-xl bg-amber-500 text-white font-medium flex items-center justify-center gap-2">
+            {t.cta.contact}
+        </a>
+    </div>
+
+    <!-- Cookie notice (Google Maps) -->
+    <div id="cookieNotice" class="hidden fixed z-[55] left-3 right-3 bottom-[5.5rem] lg:bottom-4 sm:left-auto sm:right-4 sm:max-w-sm bg-white text-slate-700 text-sm rounded-2xl shadow-2xl border border-slate-200 p-4">
+        <p class="leading-relaxed">{cookieBefore}<a href={privacyUrl} class="text-amber-600 underline underline-offset-2">{t.cookie.linkText}</a>{cookieAfter}</p>
+        <div class="flex justify-end mt-3">
+            <button type="button" onclick="dismissCookie()" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium rounded-lg transition-colors">{t.cookie.ok}</button>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" aria-label={t.a11y.close} class="absolute top-4 right-4 text-white/70 hover:text-white p-2">
+            <iconify-icon icon="solar:close-circle-linear" width="40"></iconify-icon>
+        </button>
+        <button onclick="prevImage()" aria-label={t.a11y.prevPhoto} class="absolute left-1 sm:left-4 z-10 text-white/80 hover:text-white p-2 bg-black/30 sm:bg-transparent rounded-full">
+            <iconify-icon icon="solar:alt-arrow-left-linear" width="40"></iconify-icon>
+        </button>
+        <img id="lightboxImage" src="" alt={t.a11y.photo} class="max-h-[85vh] max-w-[100vw] sm:max-w-[95vw] object-contain sm:rounded-md shadow-2xl select-none">
+        <p id="lightboxCounter" data-template={t.a11y.photoCounter} class="absolute bottom-5 left-0 right-0 text-center text-sm text-white/70"></p>
+        <button onclick="nextImage()" aria-label={t.a11y.nextPhoto} class="absolute right-1 sm:right-4 z-10 text-white/80 hover:text-white p-2 bg-black/30 sm:bg-transparent rounded-full">
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="40"></iconify-icon>
+        </button>
+    </div>
+
+    <script is:inline>
+        // Lightbox: same photos as the gallery grid, in a larger size (data-full)
+        const galleryItems = Array.from(document.querySelectorAll('#gallery .masonry-item img'));
+        let currentImageIdx = 0;
+
+        // Mobile Menu
+        // (the menu sits outside the header: the header's blur effect would otherwise
+        //  squeeze a full-screen menu into the header strip once the page is scrolled)
+        function toggleMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const open = typeof force === 'boolean' ? force : menu.classList.contains('hidden');
+            menu.classList.toggle('hidden', !open);
+            document.body.classList.toggle('overflow-hidden', open);
+            document.getElementById('menuButton').setAttribute('aria-expanded', String(open));
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
+        // close the menu if the screen is rotated/resized to desktop width
+        window.matchMedia('(min-width: 1024px)').addEventListener('change', (m) => { if (m.matches) toggleMenu(false); });
+
+        function showImage(index) {
+            const el = galleryItems[index];
+            const img = document.getElementById('lightboxImage');
+            img.src = el.dataset.full || el.currentSrc || el.src;
+            img.alt = el.alt;
+            const counter = document.getElementById('lightboxCounter');
+            counter.textContent = counter.dataset.template
+                .replace('{n}', String(index + 1))
+                .replace('{total}', String(galleryItems.length));
+        }
+        function openLightbox(index) {
+            currentImageIdx = index;
+            const lightbox = document.getElementById('lightbox');
+            showImage(index);
+            lightbox.classList.remove('hidden');
+            setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        function nextImage() {
+            currentImageIdx = (currentImageIdx + 1) % galleryItems.length;
+            showImage(currentImageIdx);
+        }
+        function prevImage() {
+            currentImageIdx = (currentImageIdx - 1 + galleryItems.length) % galleryItems.length;
+            showImage(currentImageIdx);
+        }
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Lightbox: swipe left/right on phones, tap the dark background to close
+        (() => {
+            const lb = document.getElementById('lightbox');
+            let startX = 0, startY = 0;
+            lb.addEventListener('touchstart', (e) => {
+                startX = e.changedTouches[0].clientX;
+                startY = e.changedTouches[0].clientY;
+            }, { passive: true });
+            lb.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - startX;
+                const dy = e.changedTouches[0].clientY - startY;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+                    dx < 0 ? nextImage() : prevImage();
+                }
+            }, { passive: true });
+            lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+        })();
+
+        // Cookie notice: show once, remember when closed
+        function dismissCookie() {
+            document.getElementById('cookieNotice').classList.add('hidden');
+            try { localStorage.setItem('mapNoticeSeen', '1'); } catch (e) {}
+        }
+        (() => {
+            let seen = false;
+            try { seen = localStorage.getItem('mapNoticeSeen') === '1'; } catch (e) {}
+            if (!seen) setTimeout(() => document.getElementById('cookieNotice').classList.remove('hidden'), 800);
+        })();
+
+        // Reviews: horizontal scroll buttons
+        function scrollReviews(dir) {
+            const track = document.getElementById('reviewTrack');
+            const card = track.querySelector('article');
+            const step = card ? card.getBoundingClientRect().width + 20 : track.clientWidth;
+            track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        }
+
+        // Enquiry form -> email or WhatsApp with a prefilled message (text from translations)
+        document.getElementById('enquiryForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const f = e.target;
+            const fmtDate = (v) => v ? v.split('-').reverse().join('.') : '';
+            const vars = {
+                name: f.name.value.trim(),
+                from: fmtDate(f.checkin.value),
+                to: fmtDate(f.checkout.value),
+                guests: f.guests.value,
+            };
+            const fillIn = (text) => text.replace(/\{(\w+)\}/g, (m, k) => vars[k] ?? m);
+            const lines = JSON.parse(f.dataset.msg).map(fillIn);
+            if (f.message.value.trim()) lines.push(f.message.value.trim());
+            const body = lines.join('\n');
+            if (e.submitter && e.submitter.value === 'email') {
+                window.location.href = `mailto:${f.dataset.email}?subject=${encodeURIComponent(fillIn(f.dataset.subject))}&body=${encodeURIComponent(body)}`;
+            } else {
+                window.open(`https://wa.me/${f.dataset.wa}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+            }
+        });
+
+        // Copy phone number / email to the clipboard
+        async function copyText(text) {
+            try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+            const ta = document.createElement('textarea');            // fallback for older browsers
+            ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            let ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) {}
+            ta.remove();
+            return ok;
+        }
+        document.querySelectorAll('.copy-btn').forEach((btn) => {
+            btn.addEventListener('click', async () => {
+                if (!(await copyText(btn.dataset.copy))) return;
+                const show = (done) => {
+                    btn.querySelector('.copy-icon').classList.toggle('hidden', done);
+                    btn.querySelector('.done-icon').classList.toggle('hidden', !done);
+                    btn.querySelector('.done-text').classList.toggle('hidden', !done);
+                };
+                show(true);
+                clearTimeout(btn._reset);
+                btn._reset = setTimeout(() => show(false), 2000);
+            });
+        });
+
+        // Mobile sticky bar: show after the hero
+        const mobileBar = document.getElementById('mobileBar');
+        function updateMobileBar() {
+            mobileBar.classList.toggle('translate-y-full', window.scrollY < window.innerHeight * 0.8);
+        }
+        window.addEventListener('scroll', updateMobileBar, { passive: true });
+        updateMobileBar();
+
+        // Header — transparent on hero, solid on scroll
+        const header = document.getElementById('header');
+        const headerLogo = document.getElementById('headerLogo');
+        const navLinks = document.querySelectorAll('#header .nav-link');
+        const menuBtn = document.getElementById('menuButton');
+
+        function updateHeader() {
+            const solid = window.scrollY > 80;
+            ['bg-white/95', 'backdrop-blur-md', 'border-b', 'border-slate-200', 'shadow-sm']
+                .forEach((c) => header.classList.toggle(c, solid));
+            headerLogo.src = solid ? headerLogo.dataset.dark : headerLogo.dataset.light;
+            navLinks.forEach((link) => {
+                link.classList.toggle('text-white/80', !solid);
+                link.classList.toggle('text-slate-600', solid);
+            });
+            menuBtn.classList.toggle('text-white', !solid);
+            menuBtn.classList.toggle('hover:bg-white/10', !solid);
+            menuBtn.classList.toggle('text-slate-600', solid);
+            menuBtn.classList.toggle('hover:bg-slate-100', solid);
+        }
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+    </script>
+
+</Base>

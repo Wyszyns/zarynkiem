@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Menu links scroll the section heading below the fixed header, not under it */
+html { scroll-padding-top: 5.5rem; }
+@media (min-width: 1024px) { html { scroll-padding-top: 6.5rem; } }
+
+body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+.font-display { font-family: 'Playfair Display', serif; }
+
+/* Animations */
+.fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .fade-up { animation: none; opacity: 1; transform: none; } }
+
+/* Gallery masonry */
+.masonry { column-count: 2; column-gap: 0.75rem; }
+.masonry-item { break-inside: avoid; margin-bottom: 0.75rem; }
+@media (min-width: 640px) { .masonry { column-gap: 1.5rem; } .masonry-item { margin-bottom: 1.5rem; } }
+@media (min-width: 1024px) { .masonry { column-count: 3; } }
+
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+details summary::-webkit-details-marker { display: none; }
+input:focus, textarea:focus, select:focus { outline: none; box-shadow: 0 0 0 2px #d97706; }

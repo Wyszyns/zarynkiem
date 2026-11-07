@@ -1,0 +1,332 @@
+{
+  "meta": {
+    "htmlLang": "pl",
+    "ogLocale": "pl_PL",
+    "title": "Apartament za Rynkiem Tylicz",
+    "description": "Apartament 71 m² w centrum Tylicza. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od Master Ski. Ocena {score}/10 na Booking.com. Parking i WiFi gratis.",
+    "keywords": "apartament Tylicz, nocleg Tylicz, noclegi Tylicz centrum, apartament za rynkiem, nocleg blisko stoku Tylicz",
+    "ogTitle": "Apartament za Rynkiem — rodzinny wypoczynek w Tyliczu",
+    "ogDescription": "Przestronny apartament 71 m² w centrum Tylicza. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od stoku Master Ski.",
+    "schemaDescription": "Komfortowy apartament 71 m² w centrum Tylicza. 3 sypialnie, 3 łazienki, do 9 osób. 600 m od stoku Master Ski."
+  },
+  "langSwitch": {
+    "label": "Wybierz język"
+  },
+  "nav": [
+    {
+      "href": "#about",
+      "label": "Apartament"
+    },
+    {
+      "href": "#gallery",
+      "label": "Galeria"
+    },
+    {
+      "href": "#reviews",
+      "label": "Opinie"
+    },
+    {
+      "href": "#location",
+      "label": "Lokalizacja"
+    },
+    {
+      "href": "#faq",
+      "label": "Informacje"
+    }
+  ],
+  "cta": {
+    "contact": "Skontaktuj się",
+    "seePhotos": "Zobacz zdjęcia",
+    "call": "Zadzwoń"
+  },
+  "a11y": {
+    "logo": "Apartament za Rynkiem logo",
+    "menu": "Menu",
+    "closeMenu": "Zamknij menu",
+    "prevReviews": "Poprzednie opinie",
+    "nextReviews": "Następne opinie",
+    "close": "Zamknij",
+    "prevPhoto": "Poprzednie zdjęcie",
+    "nextPhoto": "Następne zdjęcie",
+    "photo": "Zdjęcie apartamentu",
+    "photoCounter": "{n} z {total}"
+  },
+  "hero": {
+    "subtitle": "Tylicz · 600 m od stoku",
+    "text": "71 m² dla maksymalnie 9 osób: 3 sypialnie, 3 łazienki, w pełni wyposażona kuchnia i bezpłatny parking. Na stok dojdziecie pieszo w 8 minut, na rynek w 5.",
+    "ratingBadge": "{label} · {count} · {source}"
+  },
+  "facts": [
+    {
+      "icon": "solar:home-angle-linear",
+      "label": "71 m²"
+    },
+    {
+      "icon": "solar:bed-linear",
+      "label": "3 sypialnie"
+    },
+    {
+      "icon": "solar:bath-linear",
+      "label": "3 łazienki"
+    },
+    {
+      "icon": "solar:users-group-rounded-linear",
+      "label": "Do 9 osób"
+    },
+    {
+      "icon": "mdi:parking",
+      "label": "Darmowy parking"
+    },
+    {
+      "icon": "mdi:wifi",
+      "label": "Szybkie WiFi"
+    }
+  ],
+  "about": {
+    "eyebrow": "O apartamencie",
+    "title": "Miejsce dla całej rodziny albo paczki znajomych",
+    "text": "Nowo urządzone mieszkanie w Tyliczu, jednym z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Każdy ma swoją sypialnię, a trzy łazienki oznaczają koniec porannych kolejek. Po miejscowości kursują darmowe ski-busy.",
+    "imgLiving": "Salon z narożną sofą",
+    "imgKitchen": "Kuchnia z wyspą barową"
+  },
+  "amenities": [
+    {
+      "icon": "solar:bed-linear",
+      "title": "3 sypialnie",
+      "text": "Łóżko podwójne, trzy pojedyncze i dwie sofy rozkładane."
+    },
+    {
+      "icon": "solar:bath-linear",
+      "title": "3 łazienki",
+      "text": "Trzy osobne łazienki z prysznicem. W apartamencie jest też suszarka do włosów."
+    },
+    {
+      "icon": "solar:chef-hat-linear",
+      "title": "Pełna kuchnia",
+      "text": "Zmywarka, ekspres do kawy, mikrofala i pełna zastawa."
+    },
+    {
+      "icon": "solar:tv-linear",
+      "title": "Salon",
+      "text": "Smart TV z Netflixem, wygodna sofa, szybkie WiFi."
+    },
+    {
+      "icon": "solar:sun-fog-linear",
+      "title": "Ogród i balkon",
+      "text": "Altana, grill i balkon z widokiem na stok."
+    },
+    {
+      "icon": "mdi:washing-machine",
+      "title": "Pralka i żelazko",
+      "text": "Przydadzą się przy dłuższym pobycie. Na miejscu także bezpłatny parking i łóżeczko dla dziecka."
+    }
+  ],
+  "gallery": {
+    "title": "Galeria zdjęć",
+    "hint": "Kliknij zdjęcie, aby je powiększyć."
+  },
+  "reviews": {
+    "title": "Opinie naszych gości",
+    "summary": "{label} · {count}",
+    "quote": "„{text}”",
+    "swipeHint": "Przesuń, aby zobaczyć więcej",
+    "translatedFrom": {
+      "pl": "Przetłumaczono z polskiego",
+      "en": "Przetłumaczono z angielskiego"
+    },
+    "countForms": {
+      "one": "{n} opinia",
+      "few": "{n} opinie",
+      "many": "{n} opinii",
+      "other": "{n} opinii"
+    }
+  },
+  "location": {
+    "title": "Lokalizacja",
+    "text": "ul. Kopernika 11, tuż za rynkiem w Tyliczu. Stok, restauracje i sklepy macie w zasięgu spaceru.",
+    "nearbyTitle": "W pobliżu",
+    "openInMaps": "Otwórz w Mapach Google",
+    "mapTitle": "Mapa: Apartament za Rynkiem",
+    "address": "ul. Kopernika 11, 33-383 Tylicz"
+  },
+  "distances": [
+    {
+      "icon": "mdi:snowflake",
+      "name": "Stok Master Ski Family",
+      "value": "600 m · 8 min pieszo"
+    },
+    {
+      "icon": "mdi:ski",
+      "name": "Stok Tylicz Ski (darmowy ski-bus)",
+      "value": "2,2 km"
+    },
+    {
+      "icon": "solar:shop-linear",
+      "name": "Rynek, restauracje i sklepy",
+      "value": "350 m"
+    },
+    {
+      "icon": "solar:city-linear",
+      "name": "Krynica-Zdrój, centrum",
+      "value": "10 km"
+    }
+  ],
+  "nearby": [
+    {
+      "name": "Restauracja Tylicka",
+      "distance": "350 m",
+      "text": "Na rynku. Kuchnia regionalna i słynna zapiekanka tylicka."
+    },
+    {
+      "name": "Góralska Chata u Gogoca",
+      "distance": "350 m",
+      "text": "Przy rynku. Domowa atmosfera, kwaśnica i baranina."
+    },
+    {
+      "name": "Restauracja Pokusa",
+      "distance": "500 m",
+      "text": "Steki i kuchnia polska."
+    },
+    {
+      "name": "Wiejska Chata",
+      "distance": "700 m",
+      "text": "Duże porcje, przystępne ceny i kominek."
+    }
+  ],
+  "faq": {
+    "title": "Informacje praktyczne",
+    "items": [
+      {
+        "icon": "solar:clock-circle-linear",
+        "q": "Godziny zameldowania",
+        "a": "Zameldowanie 15:00–18:00 (prosimy o wcześniejszą informację o godzinie przyjazdu). Wymeldowanie 8:00–11:00."
+      },
+      {
+        "icon": "solar:users-group-rounded-linear",
+        "q": "Dzieci i łóżeczko",
+        "a": "Dzieci w każdym wieku mile widziane. Łóżeczko dziecięce (0–3 lata) bezpłatnie. Dodatkowe łóżka nie są dostępne."
+      },
+      {
+        "icon": "mdi:parking",
+        "q": "Parking i WiFi",
+        "a": "Bezpłatny prywatny parking na miejscu (bez rezerwacji). Bezpłatne WiFi w całym apartamencie."
+      },
+      {
+        "icon": "solar:forbidden-circle-linear",
+        "q": "Imprezy i palenie",
+        "a": "Całkowity zakaz palenia w apartamencie. Nie organizujemy imprez, wieczorów panieńskich ani kawalerskich."
+      }
+    ]
+  },
+  "faqSchema": [
+    {
+      "q": "Jak daleko jest do stoku narciarskiego?",
+      "a": "Stok Master Ski Family znajduje się zaledwie 600 metrów od apartamentu, a stacja Tylicz Ski 2,2 km. Po miejscowości kursują darmowe ski-busy."
+    },
+    {
+      "q": "Ile osób pomieści apartament?",
+      "a": "Apartament może komfortowo pomieścić do 9 osób w 3 sypialniach z 3 prywatnymi łazienkami."
+    },
+    {
+      "q": "Czy parking jest bezpłatny?",
+      "a": "Tak. Bezpłatny prywatny parking jest dostępny na miejscu i nie wymaga rezerwacji."
+    },
+    {
+      "q": "Jak daleko jest do Krynicy-Zdroju?",
+      "a": "Krynica-Zdrój znajduje się około 10 km od Tylicza, co zajmuje około 15 minut jazdy samochodem."
+    }
+  ],
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "text": "Napisz lub zadzwoń, a sprawdzimy dostępność w Waszym terminie i odpowiemy na pytania.",
+    "phoneLabel": "Telefon / WhatsApp",
+    "host": "Patryk Wyszyński (PL, EN)",
+    "bookingLink": "Zobacz ofertę i opinie →",
+    "facebookName": "Apartament za Rynkiem",
+    "formTitle": "Zapytaj o termin",
+    "formText": "Wiadomość przygotujemy za Ciebie — wybierz, czy wysłać ją e-mailem, czy przez WhatsApp.",
+    "name": "Imię *",
+    "namePlaceholder": "Jan",
+    "checkin": "Przyjazd *",
+    "checkout": "Wyjazd *",
+    "guests": "Liczba osób *",
+    "message": "Wiadomość",
+    "messagePlaceholder": "Np. przyjedziemy z dwójką dzieci",
+    "whatsappMessage": [
+      "Dzień dobry, nazywam się {name}.",
+      "Pytam o pobyt w Apartamencie za Rynkiem: {from} – {to}, {guests} os."
+    ],
+    "emailLabel": "E-mail",
+    "submitEmail": "Wyślij e-mailem",
+    "submitWhatsapp": "Wyślij przez WhatsApp",
+    "emailSubject": "Zapytanie o pobyt: {from} – {to}",
+    "preferDirect": "Wolisz napisać lub zadzwonić bezpośrednio?",
+    "copyPhone": "Kopiuj numer telefonu",
+    "copyEmail": "Kopiuj adres e-mail",
+    "copied": "Skopiowano"
+  },
+  "footer": {
+    "copyright": "© {year} Apartament za Rynkiem, Tylicz",
+    "privacy": "Polityka prywatności"
+  },
+  "cookie": {
+    "text": "Na stronie wyświetlamy mapę Google, która korzysta z plików cookie. Więcej w {link}.",
+    "linkText": "polityce prywatności",
+    "ok": "Rozumiem"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "text": "Ta strona nie istnieje albo została przeniesiona.",
+    "back": "Wróć na stronę główną"
+  },
+  "privacy": {
+    "slug": "polityka-prywatnosci",
+    "title": "Polityka prywatności",
+    "metaTitle": "Polityka prywatności — Apartament za Rynkiem Tylicz",
+    "updated": "Ostatnia aktualizacja: listopad 2026",
+    "back": "Wróć na stronę główną",
+    "sections": [
+      {
+        "h": "Administrator danych",
+        "p": [
+          "Administratorem Twoich danych osobowych jest Patryk Wyszyński, wynajmujący Apartament za Rynkiem, ul. Kopernika 11, 33-383 Tylicz. Kontakt: {email}, tel. {phone}."
+        ]
+      },
+      {
+        "h": "Jakie dane przetwarzamy i w jakim celu",
+        "p": [
+          "Gdy kontaktujesz się z nami telefonicznie, e-mailem lub przez WhatsApp, przetwarzamy dane, które sam podajesz (np. imię, numer telefonu, adres e-mail, termin pobytu, liczbę osób, treść wiadomości). Robimy to, aby odpowiedzieć na zapytanie i obsłużyć rezerwację (art. 6 ust. 1 lit. b RODO), a także aby wypełnić obowiązki prawne, np. podatkowe (art. 6 ust. 1 lit. c RODO), i w razie potrzeby dochodzić roszczeń (art. 6 ust. 1 lit. f RODO).",
+          "Formularz „Zapytaj o termin” nie wysyła danych na nasz serwer. Po kliknięciu przycisku otwiera się Twój program pocztowy albo WhatsApp z gotową wiadomością, a jej wysłanie odbywa się już w tym programie. W przypadku WhatsApp dane przetwarza także Meta Platforms Ireland Ltd. na zasadach swojej polityki prywatności.",
+          "Strona nie zbiera statystyk odwiedzin i nie korzysta z reklam ani narzędzi marketingowych."
+        ]
+      },
+      {
+        "h": "Usługi zewnętrzne",
+        "p": [
+          "Hosting: stronę udostępnia GitHub Pages (GitHub, Inc.). Serwer może zapisywać adres IP i dane przeglądarki w celach bezpieczeństwa.",
+          "Mapa Google: w sekcji „Lokalizacja” wyświetlamy mapę Google (Google Ireland Ltd.). Po jej załadowaniu Google może zapisywać pliki cookie i przetwarzać Twój adres IP, również poza Europejskim Obszarem Gospodarczym. Szczegóły: policies.google.com/privacy.",
+          "Ikony: część ikon na stronie jest pobierana z serwisu Iconify (api.iconify.design), który otrzymuje przy tym adres IP przeglądarki.",
+          "Rezerwacje dokonywane przez Booking.com podlegają polityce prywatności Booking.com."
+        ]
+      },
+      {
+        "h": "Jak długo przechowujemy dane",
+        "p": [
+          "Dane z zapytań przechowujemy tak długo, jak jest to potrzebne do odpowiedzi i realizacji pobytu. Dane, których wymagają przepisy podatkowe, przechowujemy przez okres wynikający z tych przepisów (zwykle 5 lat)."
+        ]
+      },
+      {
+        "h": "Twoje prawa",
+        "p": [
+          "Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania i przenoszenia oraz prawo wniesienia sprzeciwu. Aby z nich skorzystać, napisz na {email}. Przysługuje Ci też prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa)."
+        ]
+      },
+      {
+        "h": "Pliki cookie i pamięć przeglądarki",
+        "p": [
+          "Sama strona nie używa plików cookie. W pamięci przeglądarki (localStorage) zapisuje jedynie informację, że zamknąłeś komunikat o mapie, aby nie pokazywać go ponownie. Pliki cookie może zapisywać mapa Google opisana wyżej. Możesz je usunąć lub zablokować w ustawieniach przeglądarki."
+        ]
+      }
+    ]
+  }
+}
