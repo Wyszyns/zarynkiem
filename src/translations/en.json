@@ -101,12 +101,12 @@
     {
       "icon": "solar:bath-linear",
       "title": "3 bathrooms",
-      "text": "Three separate bathrooms, each with a shower. There's also a hairdryer in the apartment."
+      "text": "Three separate bathrooms, each with a shower."
     },
     {
       "icon": "solar:chef-hat-linear",
       "title": "Fully equipped kitchen",
-      "text": "Dishwasher, coffee machine, microwave and full tableware."
+      "text": "Dishwasher, washing machine, microwave and full tableware."
     },
     {
       "icon": "solar:tv-linear",
@@ -121,17 +121,17 @@
     {
       "icon": "mdi:ski",
       "title": "Ski rack",
-      "text": "Locked with a padlock, so your gear is safe overnight."
+      "text": "Locked with a padlock."
     },
     {
-      "icon": "mdi:washing-machine",
-      "title": "Washing machine and iron",
-      "text": "Handy for longer stays. Free parking and a baby cot are available too."
+      "icon": "solar:checklist-minimalistic-linear",
+      "title": "Other equipment",
+      "text": "Hairdryer, iron and a baby cot."
     },
     {
       "icon": "solar:key-linear",
       "title": "Private entrance",
-      "text": "The apartment takes up a whole floor, separate from the rest of the house. Check-in and check-out without a reception desk."
+      "text": "The apartment takes up a whole floor, separate from the rest of the house."
     }
   ],
   "gallery": {

@@ -101,12 +101,12 @@
     {
       "icon": "solar:bath-linear",
       "title": "3 łazienki",
-      "text": "Trzy osobne łazienki z prysznicem. W apartamencie jest też suszarka do włosów."
+      "text": "Trzy osobne łazienki z prysznicem."
     },
     {
       "icon": "solar:chef-hat-linear",
       "title": "W pełni wyposażona kuchnia",
-      "text": "Zmywarka, ekspres do kawy, mikrofala i pełna zastawa."
+      "text": "Zmywarka, pralka, mikrofala i pełna zastawa."
     },
     {
       "icon": "solar:tv-linear",
@@ -121,17 +121,17 @@
     {
       "icon": "mdi:ski",
       "title": "Stojak na narty",
-      "text": "Zamykany na kłódkę. Sprzęt bezpiecznie poczeka do rana."
+      "text": "Zamykany na kłódkę."
     },
     {
-      "icon": "mdi:washing-machine",
-      "title": "Pralka i żelazko",
-      "text": "Przydadzą się przy dłuższym pobycie. Na miejscu także bezpłatny parking i łóżeczko dla dziecka."
+      "icon": "solar:checklist-minimalistic-linear",
+      "title": "Pozostałe wyposażenie",
+      "text": "Suszarka do włosów, żelazko i łóżeczko dla dziecka."
     },
     {
       "icon": "solar:key-linear",
       "title": "Prywatne wejście",
-      "text": "Apartament zajmuje całe piętro i jest oddzielony od reszty domu. Zameldowanie i wymeldowanie bez recepcji."
+      "text": "Apartament zajmuje całe piętro i jest oddzielony od reszty domu."
     }
   ],
   "gallery": {
