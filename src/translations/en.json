@@ -84,8 +84,11 @@
   ],
   "about": {
     "eyebrow": "The apartment",
-    "title": "Room for the whole family or a group of friends",
-    "text": "Tylicz is one of the most popular ski resorts in Poland's Beskid Sądecki mountains. The Master Ski slope is within walking distance, and free ski buses run through the village. Three bedrooms give the whole group plenty of room, and three bathrooms mean no morning queues. This newly furnished apartment takes up a whole floor. It is separate from the rest of the house, with its own independent entrance.",
+    "title": "Space, comfort and the slope within easy reach",
+    "text": [
+      "An ideal choice for families and groups of friends who value comfort and having attractions close by. The Master Ski slope is just a few minutes' walk away, and free ski buses run conveniently around the area.",
+      "Three bedrooms, three bathrooms, a spacious living room and a fully equipped kitchen give you complete freedom during your stay."
+    ],
     "imgLiving": "Living room with a corner sofa",
     "imgKitchen": "Kitchen with a breakfast bar"
   },
@@ -102,7 +105,7 @@
     },
     {
       "icon": "solar:chef-hat-linear",
-      "title": "Full kitchen",
+      "title": "Fully equipped kitchen",
       "text": "Dishwasher, coffee machine, microwave and full tableware."
     },
     {
@@ -128,7 +131,7 @@
     {
       "icon": "solar:key-linear",
       "title": "Private entrance",
-      "text": "The apartment is self-contained. Check-in and check-out without a reception desk."
+      "text": "The apartment takes up a whole floor, separate from the rest of the house. Check-in and check-out without a reception desk."
     }
   ],
   "gallery": {

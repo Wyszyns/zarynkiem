@@ -84,8 +84,11 @@
   ],
   "about": {
     "eyebrow": "O apartamencie",
-    "title": "Miejsce dla całej rodziny albo paczki znajomych",
-    "text": "Tylicz to jeden z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Na stok Master Ski dojdziecie pieszo, a po miejscowości kursują darmowe ski-busy. Trzy sypialnie pozwalają wygodnie rozlokować całą grupę, a trzy łazienki oznaczają koniec porannych kolejek. Nowo urządzony apartament zajmuje całe piętro. Jest oddzielony od reszty domu, z niezależnym wejściem.",
+    "title": "Przestrzeń, wygoda i stok na wyciągnięcie ręki",
+    "text": [
+      "Idealny wybór dla rodzin i grup znajomych, ceniących sobie komfort oraz bliskość atrakcji. Zaledwie kilka minut spacerem dzieli Cię od stoku Master Ski, a po okolicy wygodnie kursują darmowe ski-busy.",
+      "Trzy sypialnie, trzy łazienki, przestronny salon oraz w pełni wyposażona kuchnia zapewniają pełną swobodę pobytu."
+    ],
     "imgLiving": "Salon z narożną sofą",
     "imgKitchen": "Kuchnia z wyspą barową"
   },
@@ -102,7 +105,7 @@
     },
     {
       "icon": "solar:chef-hat-linear",
-      "title": "Pełna kuchnia",
+      "title": "W pełni wyposażona kuchnia",
       "text": "Zmywarka, ekspres do kawy, mikrofala i pełna zastawa."
     },
     {
@@ -128,7 +131,7 @@
     {
       "icon": "solar:key-linear",
       "title": "Prywatne wejście",
-      "text": "Apartament jest samodzielny. Zameldowanie i wymeldowanie bez recepcji."
+      "text": "Apartament zajmuje całe piętro i jest oddzielony od reszty domu. Zameldowanie i wymeldowanie bez recepcji."
     }
   ],
   "gallery": {
