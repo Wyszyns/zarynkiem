@@ -85,7 +85,7 @@
   "about": {
     "eyebrow": "The apartment",
     "title": "Room for the whole family or a group of friends",
-    "text": "Tylicz is one of the most popular ski resorts in Poland's Beskid Sądecki mountains. Everyone gets their own bedroom, and three bathrooms mean no morning queues. Free ski buses run through the village. This newly furnished apartment takes up a whole floor. It is separate from the rest of the house, with its own independent entrance.",
+    "text": "Tylicz is one of the most popular ski resorts in Poland's Beskid Sądecki mountains. The Master Ski slope is within walking distance, and free ski buses run through the village. Three bedrooms give the whole group plenty of room, and three bathrooms mean no morning queues. This newly furnished apartment takes up a whole floor. It is separate from the rest of the house, with its own independent entrance.",
     "imgLiving": "Living room with a corner sofa",
     "imgKitchen": "Kitchen with a breakfast bar"
   },
@@ -124,6 +124,11 @@
       "icon": "mdi:washing-machine",
       "title": "Washing machine and iron",
       "text": "Handy for longer stays. Free parking and a baby cot are available too."
+    },
+    {
+      "icon": "solar:key-linear",
+      "title": "Private entrance",
+      "text": "The apartment is self-contained. Check-in and check-out without a reception desk."
     }
   ],
   "gallery": {
@@ -186,16 +191,16 @@
       "distance": "350 m"
     },
     {
+      "name": "Restauracja & Pizza Rynek16",
+      "distance": "450 m"
+    },
+    {
       "name": "Restauracja Pokusa",
       "distance": "500 m"
     },
     {
       "name": "Wiejska Chata",
       "distance": "700 m"
-    },
-    {
-      "name": "Restauracja & Pizza Rynek16",
-      "distance": "450 m"
     }
   ],
   "faq": {

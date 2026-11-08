@@ -85,7 +85,7 @@
   "about": {
     "eyebrow": "O apartamencie",
     "title": "Miejsce dla całej rodziny albo paczki znajomych",
-    "text": "Tylicz to jeden z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Każdy ma swoją sypialnię, a trzy łazienki oznaczają koniec porannych kolejek. Po miejscowości kursują darmowe ski-busy. Nowo urządzony apartament zajmuje całe piętro. Jest oddzielony od reszty domu, z niezależnym wejściem.",
+    "text": "Tylicz to jeden z najpopularniejszych ośrodków narciarskich Beskidu Sądeckiego. Na stok Master Ski dojdziecie pieszo, a po miejscowości kursują darmowe ski-busy. Trzy sypialnie pozwalają wygodnie rozlokować całą grupę, a trzy łazienki oznaczają koniec porannych kolejek. Nowo urządzony apartament zajmuje całe piętro. Jest oddzielony od reszty domu, z niezależnym wejściem.",
     "imgLiving": "Salon z narożną sofą",
     "imgKitchen": "Kuchnia z wyspą barową"
   },
@@ -124,6 +124,11 @@
       "icon": "mdi:washing-machine",
       "title": "Pralka i żelazko",
       "text": "Przydadzą się przy dłuższym pobycie. Na miejscu także bezpłatny parking i łóżeczko dla dziecka."
+    },
+    {
+      "icon": "solar:key-linear",
+      "title": "Prywatne wejście",
+      "text": "Apartament jest samodzielny. Zameldowanie i wymeldowanie bez recepcji."
     }
   ],
   "gallery": {
@@ -186,16 +191,16 @@
       "distance": "350 m"
     },
     {
+      "name": "Restauracja & Pizza Rynek16",
+      "distance": "450 m"
+    },
+    {
       "name": "Restauracja Pokusa",
       "distance": "500 m"
     },
     {
       "name": "Wiejska Chata",
       "distance": "700 m"
-    },
-    {
-      "name": "Restauracja & Pizza Rynek16",
-      "distance": "450 m"
     }
   ],
   "faq": {

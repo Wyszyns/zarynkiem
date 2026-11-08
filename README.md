@@ -1,17 +1,25 @@
 # Apartament za Rynkiem — strona wizytówka
 
-Jednostronicowa strona apartamentu w Tyliczu, zbudowana w [Astro](https://astro.build) i publikowana na GitHub Pages.
+Jednostronicowa strona apartamentu w Tyliczu (PL + EN), zbudowana w [Astro](https://astro.build) i publikowana na GitHub Pages.
 
 ## Struktura
 
 ```
-src/pages/index.astro      strona główna
-public/images/             zdjęcia i logo (kopiowane bez zmian do strony)
-design/original-index.html oryginalny projekt HTML (tylko do wglądu, nie jest publikowany)
-.github/workflows/         automatyczne wdrożenie po pushu na main
+src/components/Home.astro          strona główna (wspólna dla obu języków)
+src/components/PrivacyPage.astro   polityka prywatności
+src/pages/                         adresy stron: /, /en/, /polityka-prywatnosci, /en/privacy-policy, 404
+src/translations/pl.json, en.json  wszystkie teksty strony
+src/data/reviews.json              ocena i opinie gości (Booking.com, Google)
+src/data/gallery.json              zdjęcie główne i galeria (kolejność, opisy)
+src/assets/photos/                 zdjęcia — Astro sam je zmniejsza i konwertuje do WebP
+src/lib/contact.ts                 telefon, e-mail, linki
+public/                            ikonka karty przeglądarki, podgląd do udostępniania (images/og-image.jpg)
+.github/workflows/                 automatyczne wdrożenie po pushu na main
 ```
 
-Planowane moduły (włączane osobno): mapa z lokalizacją, kalendarz dostępności (synchronizacja z iCal Airbnb), formularz kontaktowy.
+Nowe zdjęcie: wrzuć oryginał do `src/assets/photos/` i dopisz je w `src/data/gallery.json`.
+
+Planowane moduły: kalendarz dostępności (synchronizacja z iCal Airbnb), wysyłka formularza kontaktowego e-mailem.
 
 ## Praca lokalnie
 
