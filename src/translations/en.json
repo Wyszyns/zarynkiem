@@ -163,7 +163,7 @@
     {
       "icon": "mdi:ski",
       "name": "Tylicz Ski slope (free ski bus)",
-      "value": "2.2 km"
+      "value": "1.9 km"
     },
     {
       "icon": "solar:shop-linear",
@@ -179,23 +179,23 @@
   "nearby": [
     {
       "name": "Restauracja Tylicka",
-      "distance": "350 m",
-      "text": "On the market square. Regional food and the famous Tylicz zapiekanka."
+      "distance": "350 m"
     },
     {
       "name": "Góralska Chata u Gogoca",
-      "distance": "350 m",
-      "text": "By the market square. Homely feel, kwaśnica (sauerkraut soup) and lamb."
+      "distance": "350 m"
     },
     {
       "name": "Restauracja Pokusa",
-      "distance": "500 m",
-      "text": "Steaks and Polish cuisine."
+      "distance": "500 m"
     },
     {
       "name": "Wiejska Chata",
-      "distance": "700 m",
-      "text": "Generous portions, fair prices and a fireplace."
+      "distance": "700 m"
+    },
+    {
+      "name": "Restauracja & Pizza Rynek16",
+      "distance": "450 m"
     }
   ],
   "faq": {
@@ -217,6 +217,11 @@
         "a": "Free private parking on site (no reservation needed). Free WiFi throughout the apartment."
       },
       {
+        "icon": "solar:cat-linear",
+        "q": "Pets",
+        "a": "Pets are welcome by prior arrangement. Additional fees may apply."
+      },
+      {
         "icon": "solar:forbidden-circle-linear",
         "q": "Parties and smoking",
         "a": "Smoking is not allowed anywhere in the apartment. No parties, hen or stag events."
@@ -226,7 +231,7 @@
   "faqSchema": [
     {
       "q": "How far is the ski slope?",
-      "a": "The Master Ski Family slope is just 600 metres from the apartment, and Tylicz Ski is 2.2 km away. Free ski buses run through the village."
+      "a": "The Master Ski Family slope is just 600 metres from the apartment, and Tylicz Ski is 1.9 km away. Free ski buses run through the village."
     },
     {
       "q": "How many people does the apartment sleep?",
@@ -239,6 +244,10 @@
     {
       "q": "How far is Krynica-Zdrój?",
       "a": "Krynica-Zdrój is about 10 km from Tylicz, roughly a 15-minute drive."
+    },
+    {
+      "q": "Can I bring a pet?",
+      "a": "Pets are welcome by prior arrangement. Additional fees may apply."
     }
   ],
   "contact": {

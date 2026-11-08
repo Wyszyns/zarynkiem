@@ -374,11 +374,11 @@ const schemaFaq = {
                     <div class="grid sm:grid-cols-2 gap-3">
                         {t.nearby.map((n) => (
                             <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-800">
-                                <div class="flex items-center justify-between gap-2 mb-1">
+                                <div class="flex items-center justify-between gap-2">
                                     <p class="font-medium text-white">{n.name}</p>
                                     <span class="text-xs text-amber-400 shrink-0">{n.distance}</span>
                                 </div>
-                                <p class="text-xs text-slate-400 leading-relaxed">{n.text}</p>
+                                {n.text && <p class="text-xs text-slate-400 leading-relaxed">{n.text}</p>}
                             </div>
                         ))}
                     </div>

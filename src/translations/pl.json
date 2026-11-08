@@ -163,7 +163,7 @@
     {
       "icon": "mdi:ski",
       "name": "Stok Tylicz Ski (darmowy ski-bus)",
-      "value": "2,2 km"
+      "value": "1,9 km"
     },
     {
       "icon": "solar:shop-linear",
@@ -179,23 +179,23 @@
   "nearby": [
     {
       "name": "Restauracja Tylicka",
-      "distance": "350 m",
-      "text": "Na rynku. Kuchnia regionalna i słynna zapiekanka tylicka."
+      "distance": "350 m"
     },
     {
       "name": "Góralska Chata u Gogoca",
-      "distance": "350 m",
-      "text": "Przy rynku. Domowa atmosfera, kwaśnica i baranina."
+      "distance": "350 m"
     },
     {
       "name": "Restauracja Pokusa",
-      "distance": "500 m",
-      "text": "Steki i kuchnia polska."
+      "distance": "500 m"
     },
     {
       "name": "Wiejska Chata",
-      "distance": "700 m",
-      "text": "Duże porcje, przystępne ceny i kominek."
+      "distance": "700 m"
+    },
+    {
+      "name": "Restauracja & Pizza Rynek16",
+      "distance": "750 m"
     }
   ],
   "faq": {
@@ -217,6 +217,11 @@
         "a": "Bezpłatny prywatny parking na miejscu (bez rezerwacji). Bezpłatne WiFi w całym apartamencie."
       },
       {
+        "icon": "solar:cat-linear",
+        "q": "Zwierzęta",
+        "a": "Zwierzęta są akceptowane po wcześniejszym uzgodnieniu. Mogą obowiązywać dodatkowe opłaty."
+      },
+      {
         "icon": "solar:forbidden-circle-linear",
         "q": "Imprezy i palenie",
         "a": "Całkowity zakaz palenia w apartamencie. Nie organizujemy imprez, wieczorów panieńskich ani kawalerskich."
@@ -226,7 +231,7 @@
   "faqSchema": [
     {
       "q": "Jak daleko jest do stoku narciarskiego?",
-      "a": "Stok Master Ski Family znajduje się zaledwie 600 metrów od apartamentu, a stacja Tylicz Ski 2,2 km. Po miejscowości kursują darmowe ski-busy."
+      "a": "Stok Master Ski Family znajduje się zaledwie 600 metrów od apartamentu, a stacja Tylicz Ski 1,9 km. Po miejscowości kursują darmowe ski-busy."
     },
     {
       "q": "Ile osób pomieści apartament?",
@@ -239,6 +244,10 @@
     {
       "q": "Jak daleko jest do Krynicy-Zdroju?",
       "a": "Krynica-Zdrój znajduje się około 10 km od Tylicza, co zajmuje około 15 minut jazdy samochodem."
+    },
+    {
+      "q": "Czy można przyjechać ze zwierzęciem?",
+      "a": "Zwierzęta są akceptowane po wcześniejszym uzgodnieniu. Mogą obowiązywać dodatkowe opłaty."
     }
   ],
   "contact": {
